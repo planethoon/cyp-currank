@@ -9,7 +9,6 @@ const Form = ({ submit }) => {
   };
 
   const handlePoint = (e) => {
-    console.log(e);
     setPoint(e.target.value);
   };
 
