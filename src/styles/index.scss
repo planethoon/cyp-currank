@@ -1,0 +1,23 @@
+// variable
+$main-color: #bde9fb;
+$sub1-color: #90cdfb;
+$sub2-color: #dfade5;
+
+//mixin
+@mixin flexbox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+//fonts
+@import "./font";
+
+// reset
+@import "./reset";
+
+// components
+@import "./Main";
+@import "./Widget";
+@import "./Header";
+@import "./Form";
