@@ -19,7 +19,7 @@ function Main({ rankPoint, rank, nickname, rankImg, submit }) {
                 onClick={() => {
                   setCopy("복사완료!");
                   navigator.clipboard.writeText(
-                    `http://localhost:3000/widget/${nickname}&${rankPoint}`
+                    `${window.document.location.href}widget/${nickname}&${rankPoint}`
                   );
                   setTimeout(() => {
                     setCopy("링크복사");
