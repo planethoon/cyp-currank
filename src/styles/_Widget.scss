@@ -1,7 +1,9 @@
 .widget--wrapper {
   @include flexbox();
   justify-content: center;
-  background-color: #00000010;
+  // background-color: #00000010;
+  background-color: #00000050;
+  // background-color: #00000098;
 
   border-radius: 8px;
   width: 300px;
@@ -29,6 +31,9 @@
   @include flexbox();
   margin: 10px 0px;
   font-size: 18px;
+  text-shadow: -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white,
+    1px 1px 0 white;
+  // -webkit-text-stroke: 0.3px white;
 }
 
 .widget--info--nickname {
