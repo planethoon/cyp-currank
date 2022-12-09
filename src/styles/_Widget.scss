@@ -31,16 +31,22 @@
   @include flexbox();
   margin: 10px 0px;
   font-size: 18px;
-  text-shadow: -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white,
-    1px 1px 0 white;
-  // -webkit-text-stroke: 0.3px white;
+  color: white;
 }
 
 .widget--info--nickname {
   font-size: 20px;
+  text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black,
+    1px 1px 0 black;
+}
+
+.widget--info--rank {
+  text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black,
+    1px 1px 0 black;
 }
 
 .widget--info--rankPoint {
-  font-size: 28px;
-  font-weight: 600;
+  font-size: 42px;
+  -webkit-text-stroke: 0.2px black;
+  font-weight: 800;
 }
