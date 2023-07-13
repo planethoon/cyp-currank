@@ -1,18 +1,23 @@
-import Main from "./pages/Main";
-import Widget from "./pages/Widget";
-import "../src/styles/index.scss";
-import { Route, Routes } from "react-router-dom";
+import Widget from "../components/Widget";
+import Header from "../components/Header.js";
+import Form from "../components/Form.js";
+import { useRouter } from "next/router";
+
 import { useState } from "react";
 
 // images
 
-import { bronze, silver, gold, joker, ace, hero, legend } from "./images";
+import { bronze, silver, gold, joker, ace, hero, legend } from "../images";
 
 function App() {
+  /*로컬 상태*/
   const [nickname, setNickname] = useState("527");
   const [rankPoint, setRankPoint] = useState(2259);
   const [rank, setRank] = useState("골드 II");
   const [rankImg, setRankImg] = useState(gold);
+  const [copy, setCopy] = useState("링크복사");
+
+  const router = useRouter();
 
   const submit = (nickname, point) => {
     setNickname(nickname);
@@ -74,31 +79,37 @@ function App() {
 
   return (
     <div className="App">
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <Main
-              rankPoint={rankPoint}
-              rank={rank}
-              nickname={nickname}
-              rankImg={rankImg}
-              submit={submit}
-            />
-          }
-        />
-        <Route
-          path="widget/:userinfo"
-          element={
+      <div className="main--background">
+        <Header />
+        <div className="main--wrapper">
+          <div className="main--preview">
+            <div className="main--preview--header">
+              <span>미리보기</span>
+              <div
+                className="main--copybtn"
+                onClick={() => {
+                  setCopy("복사완료!");
+                  navigator.clipboard.writeText(
+                    `${window.document.location.href}widget/${nickname}&${rankPoint}`
+                  );
+                  setTimeout(() => {
+                    setCopy("링크복사");
+                  }, 5000);
+                }}
+              >
+                {copy}
+              </div>
+            </div>
             <Widget
               rankPoint={rankPoint}
               rank={rank}
               nickname={nickname}
               rankImg={rankImg}
             />
-          }
-        />
-      </Routes>
+          </div>
+          <Form submit={submit} />
+        </div>
+      </div>
     </div>
   );
 }

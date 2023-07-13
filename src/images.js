@@ -1,9 +1,9 @@
-import bronze from "./images/bronze.png";
-import silver from "./images/silver.png";
-import gold from "./images/gold.png";
-import joker from "./images/joker.png";
-import ace from "./images/ace.png";
-import hero from "./images/hero.png";
-import legend from "./images/legend.png";
+import bronze from "../public/images/bronze.png";
+import silver from "../public/images/silver.png";
+import gold from "../public/images/gold.png";
+import joker from "../public/images/joker.png";
+import ace from "../public/images/ace.png";
+import hero from "../public/images/hero.png";
+import legend from "../public/images/legend.png";
 
 export { bronze, silver, gold, joker, ace, hero, legend };
