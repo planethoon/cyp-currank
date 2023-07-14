@@ -40,16 +40,21 @@ const Widget = ({ nickname }) => {
   }, [nickname]);
 
   useEffect(() => {
-    console.log(userInfo);
     setImg(userInfo.tierName.split(" ")[0].toLowerCase());
   }, [userInfo]);
 
+  useEffect(() => {
+    checkHighTier();
+    setImg(userInfo.tierName.split(" ")[0].toLowerCase());
+  }, [img]);
+
   const checkHighTier = () => {
-    if (userInfo.rank >= 30) {
+    if (userInfo.rank <= 30) {
       userInfo.tierName = "LEGEND";
-    } else if (userInfo.rank >= 130) {
+    } else if (userInfo.rank <= 130) {
       userInfo.tierName = "HERO";
     }
+    console.log(userInfo);
   };
 
   const setWidget = () => {
