@@ -32,12 +32,27 @@
   margin: 10px 0px;
   font-size: 24px;
   color: white;
-  height: 20px;
 }
-
+.widget--info--rank.bronze {
+  font-size: 20px;
+}
 .widget--info--nickname {
   font-size: 36px;
+  &.five {
+    font-size: 30px;
+  }
+  &.six {
+    font-size: 24px;
+  }
+  &.seven {
+    font-size: 21px;
+  }
+  &.eight {
+    font-size: 18px;
+  }
 }
+// 한글
+// 한글 8글자 18px
 
 .widget--info--rankPoint {
   font-size: 48px;

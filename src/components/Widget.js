@@ -14,7 +14,7 @@ import Image from "next/image";
 const Widget = ({ nickname }) => {
   const [userInfo, setUserInfo] = useState({
     playerId: "",
-    nickname,
+    nickname: "",
     tierName: "BRONZE 4TH",
     ratingPoint: 0,
     rank: 0,
@@ -33,12 +33,15 @@ const Widget = ({ nickname }) => {
       });
   };
 
+  /* 데이터 페칭 */
   useEffect(() => {
     if (nickname) {
       getUser(nickname);
     }
   }, [nickname]);
 
+  /* 아래 두 이펙트 훅은 이미지 설정을 위한 이펙트 훅이다.
+  동기적으로 이루어져야 하기에 따로 두어 사용 */
   useEffect(() => {
     setImg(userInfo.tierName.split(" ")[0].toLowerCase());
   }, [userInfo]);
@@ -49,19 +52,28 @@ const Widget = ({ nickname }) => {
   }, [img]);
 
   const checkHighTier = () => {
-    if (userInfo.rank <= 30) {
+    if (userInfo.rank && userInfo.rank <= 30) {
       userInfo.tierName = "LEGEND";
-    } else if (userInfo.rank <= 130) {
+    } else if (userInfo.rank && userInfo.rank <= 130) {
       userInfo.tierName = "HERO";
     }
-    console.log(userInfo);
   };
 
-  const setWidget = () => {
-    if (!userInfo.ratingPoint) {
-      return;
+  const adjustNicknameSize = (nickname) => {
+    let leng = nickname.length;
+
+    if (leng < 5) {
+    } else if (leng === 5) {
+      return `widget--info--nickname five`;
+    } else if (leng === 6) {
+      return `widget--info--nickname six`;
+    } else if (leng === 7) {
+      return `widget--info--nickname seven`;
+    } else if (leng === 8) {
+      return `widget--info--nickname eight`;
+    } else {
+      return `widget--info--nickname`;
     }
-    userInfo.rankName;
   };
 
   return (
@@ -71,10 +83,20 @@ const Widget = ({ nickname }) => {
       </div>
       <div className="widget--info--wrapper">
         <div className="widget--info--outer">
-          <span className="widget--info--nickname">{userInfo.nickname}</span>
+          <span className={adjustNicknameSize(userInfo.nickname)}>
+            {userInfo.nickname}
+          </span>
         </div>
         <div className="widget--info--outer">
-          <span className="widget--info--rank">{userInfo.tierName}</span>
+          <span
+            className={
+              img === "bronze"
+                ? "widget--info--rank bronze"
+                : "widget--info--rank"
+            }
+          >
+            {userInfo.tierName}
+          </span>
         </div>
         <div className="widget--info--outer">
           <span className="widget--info--rankPoint">
