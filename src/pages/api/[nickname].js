@@ -4,6 +4,8 @@ export default async function handler(req, res) {
   const key = process.env.API_KEY;
   const endpoint = "https://api.neople.co.kr/cy";
   const { nickname } = req.query;
+
+  let nicknameRes, nicknameJson, matchingRes, matchingJson, rankRes, rankJson;
   let userData = {
     playerId: "",
     nickname: "",
@@ -12,49 +14,43 @@ export default async function handler(req, res) {
     rank: 0,
   };
 
-  console.log("API 호출 됐음!", key, nickname);
+  try {
+    nicknameRes = await fetch(
+      endpoint + `/players?nickname=${nickname}&wordType=match&apikey=${key}`
+    );
+    nicknameJson = await nicknameRes.json();
+    userData.playerId = nicknameJson.rows[0].playerId;
+  } catch (err) {
+    console.error("닉네임 조회 에러", err);
+    res.status(404).json({ message: "player not found" });
+    return;
+  }
 
-  await fetch(
-    endpoint + `/players?nickname=${nickname}&wordType=match&apikey=${key}`,
-    {
-      method: "GET",
+  try {
+    matchingRes = await fetch(
+      endpoint + `/players/${userData.playerId}?apikey=${key}`
+    );
+    matchingJson = await matchingRes.json();
+    userData.nickname = await matchingJson.nickname;
+    userData.tierName = await matchingJson.tierName;
+    userData.ratingPoint = await matchingJson.ratingPoint;
+  } catch (err) {
+    console.error("전적 조회 에러", err);
+    return;
+  }
+
+  try {
+    rankRes = await fetch(
+      endpoint +
+        `/ranking/ratingpoint?playerId=${userData.playerId}&apikey=${key}`
+    );
+    rankJson = await rankRes.json();
+    if (rankJson.rows[0]) {
+      userData.rank = await rankJson.rows[0].rank;
     }
-  )
-    .then((res) => res.json())
-    .then((data) => {
-      userData.playerId = data.rows[0].playerId;
-    })
-    .catch((err) => {
-      console.error("닉네임 조회 에러", err);
-      res.status(404).json({ message: "player not found" });
-    });
-
-  await fetch(endpoint + `/players/${userData.playerId}?apikey=${key}`, {
-    method: "GET",
-  })
-    .then((res) => res.json())
-    .then((data) => {
-      userData.nickname = data.nickname;
-      userData.tierName = data.tierName;
-      userData.ratingPoint = data.ratingPoint;
-    })
-    .catch((err) => {
-      console.error("전적 조회 에러", err);
-    });
-
-  await fetch(
-    endpoint +
-      `/ranking/ratingpoint?playerId=${userData.playerId}&apikey=${key}`,
-    { method: "GET" }
-  )
-    .then((res) => res.json())
-    .then((data) => {
-      if (data.rows[0]) {
-        userData.rank = data.rows[0].rank;
-      }
-      res.status(200).json(userData);
-    })
-    .catch((err) => {
-      console.error("랭킹 조회 에러", err);
-    });
+    res.status(200).json(userData);
+  } catch (err) {
+    console.error("랭킹 조회 에러", err);
+    return;
+  }
 }
