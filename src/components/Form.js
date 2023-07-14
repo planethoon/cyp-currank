@@ -1,44 +1,40 @@
 import { useState } from "react";
 
-const Form = ({ submit }) => {
+const Form = ({ submit, isValid, didTest }) => {
   const [nickname, setNickname] = useState("");
-  const [point, setPoint] = useState("0");
 
   const handleNickname = (e) => {
     setNickname(e.target.value);
   };
 
-  const handlePoint = (e) => {
-    setPoint(e.target.value);
-  };
-
   return (
     <div className="main--form">
-      <div className="form--title">닉네임</div>
+      <div className={isValid ? "form--title" : `form--title wrong`}>
+        닉네임
+      </div>
       <div className="form--input--wrapper">
         <input
           type="text"
-          className="form--nickname"
+          className={isValid ? "form--nickname" : "form--nickname wrong"}
           value={nickname}
           onChange={handleNickname}
+          onKeyUp={(e) => {
+            if (e.key === "Enter") {
+              submit(nickname);
+            }
+          }}
         />
       </div>
-
-      <div className="form--title">점수</div>
-      <div className="form--input--wrapper">
-        <input
-          type="text"
-          className="form--rankpoint"
-          value={point}
-          onChange={handlePoint}
-          maxLength="4"
-        />
+      <div className={"form--alert"}>
+        <span className={isValid && didTest ? "" : "wrong"}>
+          {didTest ? "닉네임을 확인해주세요." : "미배치 계정입니다."}
+        </span>
       </div>
 
       <div
         className="form--submit"
         onClick={() => {
-          submit(nickname, point);
+          submit(nickname);
         }}
       >
         <span>적용</span>

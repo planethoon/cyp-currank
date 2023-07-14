@@ -1,14 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import ImagesDir, {
-  bronze,
-  silver,
-  gold,
-  joker,
-  ace,
-  hero,
-  legend,
-} from "../images";
+import ImagesDir from "../images";
 import Image from "next/image";
 
 const Widget = ({ nickname }) => {
@@ -43,12 +35,16 @@ const Widget = ({ nickname }) => {
   /* 아래 두 이펙트 훅은 이미지 설정을 위한 이펙트 훅이다.
   동기적으로 이루어져야 하기에 따로 두어 사용 */
   useEffect(() => {
-    setImg(userInfo.tierName.split(" ")[0].toLowerCase());
+    if (userInfo.tierName) {
+      setImg(userInfo.tierName.split(" ")[0].toLowerCase());
+    }
   }, [userInfo]);
 
   useEffect(() => {
-    checkHighTier();
-    setImg(userInfo.tierName.split(" ")[0].toLowerCase());
+    if (userInfo.tierName) {
+      checkHighTier();
+      setImg(userInfo.tierName.split(" ")[0].toLowerCase());
+    }
   }, [img]);
 
   const checkHighTier = () => {

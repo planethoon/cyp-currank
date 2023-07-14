@@ -11,70 +11,38 @@ import { bronze, silver, gold, joker, ace, hero, legend } from "../images";
 
 function App() {
   /*로컬 상태*/
-  const [nickname, setNickname] = useState("527");
-  const [rankPoint, setRankPoint] = useState(2259);
-  const [rank, setRank] = useState("골드 II");
-  const [rankImg, setRankImg] = useState(gold);
+  const [nickname, setNickname] = useState("Solidity");
   const [copy, setCopy] = useState("링크복사");
+  const [isValid, setIsValid] = useState(true);
+  const [didTest, setDidTest] = useState(true);
 
   const router = useRouter();
 
-  const submit = (nickname, point) => {
-    setNickname(nickname);
-    let temp = Number(point);
-    setRankPoint(temp);
-    if (point >= 2800) {
-      setRank("에이스");
-      setRankImg(ace);
-    } else if (point >= 2700) {
-      setRank("조커 I");
-      setRankImg(joker);
-    } else if (point >= 2600) {
-      setRank("조커 II");
-      setRankImg(joker);
-    } else if (point >= 2500) {
-      setRank("조커 III");
-      setRankImg(joker);
-    } else if (point >= 2400) {
-      setRank("조커 IV");
-      setRankImg(joker);
-    } else if (point >= 2300) {
-      setRank("골드 I");
-      setRankImg(gold);
-    } else if (point >= 2200) {
-      setRank("골드 II");
-      setRankImg(gold);
-    } else if (point >= 2100) {
-      setRank("골드 III");
-      setRankImg(gold);
-    } else if (point >= 2000) {
-      setRank("골드 IV");
-      setRankImg(gold);
-    } else if (point >= 1900) {
-      setRank("실버 I");
-      setRankImg(silver);
-    } else if (point >= 1800) {
-      setRank("실버 II");
-      setRankImg(silver);
-    } else if (point >= 1700) {
-      setRank("실버 III");
-      setRankImg(silver);
-    } else if (point >= 1600) {
-      setRank("실버 IV");
-      setRankImg(silver);
-    } else if (point >= 1500) {
-      setRank("브론즈 I");
-      setRankImg(bronze);
-    } else if (point >= 1400) {
-      setRank("브론즈 II");
-      setRankImg(bronze);
-    } else if (point >= 1300) {
-      setRank("브론즈 III");
-      setRankImg(bronze);
-    } else {
-      setRank("브론즈 IV");
-      setRankImg(bronze);
+  const submit = async (nickname) => {
+    await checkNickname(nickname);
+    if (isValid) {
+      setNickname(nickname);
     }
+  };
+
+  const checkNickname = (nickname) => {
+    fetch(`/api/nicknameCheck/${nickname}`)
+      .then((res) => {
+        setDidTest(true);
+        if (res.status !== 200) {
+          console.log("무효");
+          setIsValid(false);
+        } else {
+          console.log("유효");
+          setIsValid(true);
+        }
+        return res.json();
+      })
+      .then((data) => {
+        console.log("테스트 여부", data.tierTest);
+
+        setDidTest(data.tierTest);
+      });
   };
 
   return (
@@ -90,7 +58,7 @@ function App() {
                 onClick={() => {
                   setCopy("복사완료!");
                   navigator.clipboard.writeText(
-                    `${window.document.location.href}widget/${nickname}&${rankPoint}`
+                    `${window.document.location.href}widget/${nickname}`
                   );
                   setTimeout(() => {
                     setCopy("링크복사");
@@ -100,14 +68,14 @@ function App() {
                 {copy}
               </div>
             </div>
-            <Widget
-              rankPoint={rankPoint}
-              rank={rank}
-              nickname={nickname}
-              rankImg={rankImg}
-            />
+            <Widget nickname={nickname} />
           </div>
-          <Form submit={submit} />
+          <Form
+            submit={submit}
+            checkNickname={checkNickname}
+            isValid={isValid}
+            didTest={didTest}
+          />
         </div>
       </div>
     </div>

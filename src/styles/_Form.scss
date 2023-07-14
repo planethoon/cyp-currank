@@ -7,7 +7,6 @@
 
 .form--input--wrapper {
   height: 40px;
-  margin-bottom: 15px;
 }
 
 input {
@@ -23,17 +22,50 @@ input {
   &:hover {
     border-bottom: 3px solid black;
     transition: 0.2s;
+    &.wrong {
+      border-bottom: 3px solid red;
+      transition: 0.2s;
+    }
   }
   &:focus {
     border: 0;
     outline: none;
     border-bottom: 5px solid black;
     transition: 0.2s;
+    &.wrong {
+      border-bottom: 5px solid red;
+      transition: 0.2s;
+    }
+  }
+  &.wrong {
+    border-bottom: 2px solid red;
+    transition: 0.2s;
   }
 }
 
 .form--title {
   font-size: 24px;
+  color: black;
+  transition: 0.2s;
+  &.wrong {
+    color: red;
+    transition: 0.2s;
+  }
+}
+
+.form--alert {
+  height: 24px;
+  font-size: 20px;
+  color: red;
+
+  span {
+    opacity: 0;
+    transition: 0.2s;
+    &.wrong {
+      opacity: 1;
+      transition: 0.2s;
+    }
+  }
 }
 
 .form--submit {
@@ -43,6 +75,7 @@ input {
   height: 36px;
   // border: 1px solid black;
   border-radius: 5px;
+  margin-top: 8px;
   cursor: pointer;
   transition: 0.4s;
   &:hover {
