@@ -6,4 +6,6 @@ import ace from "../public/images/ace.png";
 import hero from "../public/images/hero.png";
 import legend from "../public/images/legend.png";
 
-export default { bronze, silver, gold, joker, ace, hero, legend };
+const imgs = { bronze, silver, gold, joker, ace, hero, legend };
+
+export default imgs;

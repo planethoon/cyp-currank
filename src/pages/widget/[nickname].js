@@ -5,7 +5,7 @@ import { useEffect } from "react";
 import Layout from "../../components/Layout";
 import Footer from "../../components/Footer";
 
-export default function usernameSlug() {
+export default function UsernameSlug() {
   const router = useRouter();
 
   const { nickname } = router.query;
@@ -17,6 +17,6 @@ export default function usernameSlug() {
   );
 }
 
-usernameSlug.addFooter = function addFooter(page) {
+UsernameSlug.addFooter = function addFooter(page) {
   return <div>{page}</div>;
 };

@@ -45,6 +45,7 @@ const Widget = ({ nickname }) => {
       checkHighTier();
       setImg(userInfo.tierName.split(" ")[0].toLowerCase());
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [img]);
 
   const checkHighTier = () => {
