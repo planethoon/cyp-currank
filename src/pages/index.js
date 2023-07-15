@@ -4,12 +4,10 @@ import Form from "../components/Form.js";
 import { useRouter } from "next/router";
 
 import { useState } from "react";
+import Layout from "../components/Layout";
+import Footer from "../components/Footer";
 
-// images
-
-import { bronze, silver, gold, joker, ace, hero, legend } from "../images";
-
-function App() {
+export default function App() {
   /*로컬 상태*/
   const [nickname, setNickname] = useState("Solidity");
   const [copy, setCopy] = useState("링크복사");
@@ -30,17 +28,13 @@ function App() {
       .then((res) => {
         setDidTest(true);
         if (res.status !== 200) {
-          console.log("무효");
           setIsValid(false);
         } else {
-          console.log("유효");
           setIsValid(true);
         }
         return res.json();
       })
       .then((data) => {
-        console.log("테스트 여부", data.tierTest);
-
         setDidTest(data.tierTest);
       });
   };
@@ -82,4 +76,10 @@ function App() {
   );
 }
 
-export default App;
+App.addFooter = function addFooter(page) {
+  return (
+    <Layout>
+      <Footer>{page}</Footer>
+    </Layout>
+  );
+};
