@@ -1,3 +1,6 @@
 [build]
   publish = ".next"
   command = "npm run build"
+
+[[redirects]]
+  status = 200
