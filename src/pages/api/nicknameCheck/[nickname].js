@@ -13,7 +13,7 @@ export default async function handler(req, res) {
     nicknameJson = await nicknameRes.json();
 
     if (!nicknameJson.rows[0]) {
-      res.status(404).json({ message: "player not found" });
+      res.status(404).json({ playerFound: false, tierTest: false });
     } else {
       playerId = await nicknameJson.rows[0].playerId;
 
@@ -24,10 +24,10 @@ export default async function handler(req, res) {
       matchingJson = await matchingRes.json();
       tierTest = await matchingJson.tierTest;
 
-      res.status(200).json({ message: "player found", tierTest });
+      res.status(200).json({ playerFound: true, tierTest });
     }
   } catch (err) {
     console.error("닉네임 조회 에러", err);
-    res.status(404).json({ message: "player not found" });
+    res.status(404).json({ playerFound: false, tierTest: false });
   }
 }

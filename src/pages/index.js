@@ -3,7 +3,7 @@ import Header from "../components/Header.js";
 import Form from "../components/Form.js";
 import { useRouter } from "next/router";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Layout from "../components/Layout";
 import Footer from "../components/Footer";
 
@@ -11,31 +11,26 @@ export default function App() {
   /*로컬 상태*/
   const [nickname, setNickname] = useState("Solidity");
   const [copy, setCopy] = useState("링크복사");
-  const [isValid, setIsValid] = useState(true);
-  const [didTest, setDidTest] = useState(true);
+  const [checkPlayer, setCheckPlayer] = useState({
+    playerFound: true,
+    tierTest: true,
+  });
 
   const router = useRouter();
 
   const submit = async (nickname) => {
     await checkNickname(nickname);
-    if (isValid) {
+    if (checkPlayer.playerFound) {
       setNickname(nickname);
     }
   };
 
   const checkNickname = (nickname) => {
     fetch(`/api/nicknameCheck/${nickname}`)
-      .then((res) => {
-        setDidTest(true);
-        if (res.status !== 200) {
-          setIsValid(false);
-        } else {
-          setIsValid(true);
-        }
-        return res.json();
-      })
+      .then((res) => res.json())
       .then((data) => {
-        setDidTest(data.tierTest);
+        console.log(data);
+        setCheckPlayer(data);
       });
   };
 
@@ -67,8 +62,7 @@ export default function App() {
           <Form
             submit={submit}
             checkNickname={checkNickname}
-            isValid={isValid}
-            didTest={didTest}
+            checkPlayer={checkPlayer}
           />
         </div>
       </div>

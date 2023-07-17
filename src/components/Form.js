@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const Form = ({ submit, isValid, didTest }) => {
+const Form = ({ submit, checkPlayer }) => {
   const [nickname, setNickname] = useState("");
 
   const handleNickname = (e) => {
@@ -9,13 +9,23 @@ const Form = ({ submit, isValid, didTest }) => {
 
   return (
     <div className="main--form">
-      <div className={isValid ? "form--title" : `form--title wrong`}>
+      <div
+        className={
+          checkPlayer.playerFound && checkPlayer.tierTest
+            ? "form--title"
+            : `form--title wrong`
+        }
+      >
         닉네임
       </div>
       <div className="form--input--wrapper">
         <input
           type="text"
-          className={isValid ? "form--nickname" : "form--nickname wrong"}
+          className={
+            checkPlayer.playerFound && checkPlayer.tierTest
+              ? "form--nickname"
+              : "form--nickname wrong"
+          }
           value={nickname}
           onChange={handleNickname}
           onKeyUp={(e) => {
@@ -26,8 +36,14 @@ const Form = ({ submit, isValid, didTest }) => {
         />
       </div>
       <div className={"form--alert"}>
-        <span className={isValid && didTest ? "" : "wrong"}>
-          {didTest ? "닉네임을 확인해주세요." : "미배치 계정입니다."}
+        <span
+          className={
+            checkPlayer.playerFound && checkPlayer.tierTest ? "" : "wrong"
+          }
+        >
+          {checkPlayer.playerFound && !checkPlayer.tierTest
+            ? "미배치 계정입니다."
+            : "닉네임을 확인해주세요."}
         </span>
       </div>
 
