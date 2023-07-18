@@ -29,7 +29,6 @@ export default function App() {
     fetch(`/api/nicknameCheck/${nickname}`)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         setCheckPlayer(data);
       });
   };
