@@ -34,7 +34,7 @@ const Widget = ({ nickname, data }) => {
       if (nickname) {
         getUser(nickname);
       }
-    }, 300000);
+    }, 180000);
 
     return () => {
       clearInterval(interval);
