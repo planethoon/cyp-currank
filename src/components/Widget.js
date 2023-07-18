@@ -15,6 +15,7 @@ const Widget = ({ nickname, data }) => {
   const [img, setImg] = useState();
 
   const getUser = (name) => {
+    console.log("getUSER 실행");
     fetch(`/api/${name}`)
       .then((res) => res.json())
       .then((data) => {
@@ -27,12 +28,19 @@ const Widget = ({ nickname, data }) => {
 
   /* 데이터 페칭 */
   useEffect(() => {
+    if (nickname) {
+      getUser(nickname);
+    }
     const interval = setInterval(() => {
+      console.log("인터벌 도는 중");
       if (nickname) {
         getUser(nickname);
       }
     }, 300000);
-    return () => clearInterval(interval);
+
+    return () => {
+      clearInterval(interval);
+    };
   }, [nickname]);
 
   /* 아래 두 이펙트 훅은 이미지 설정을 위한 이펙트 훅이다.

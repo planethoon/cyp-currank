@@ -6,7 +6,7 @@ export default function Footer({ children }) {
       {children}
       <div className={"footer--container"}>
         <div className={"footer--email"}>
-          요청&피드백 : dev.sunghoon@gmail.com
+          버그제보&피드백 : dev.sunghoon@gmail.com
         </div>
         <Link href="https://developers.neople.co.kr">
           <a target="_blank">
