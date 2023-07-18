@@ -15,7 +15,6 @@ const Widget = ({ nickname, data }) => {
   const [img, setImg] = useState();
 
   const getUser = (name) => {
-    console.log("getUSER 실행");
     fetch(`/api/${name}`)
       .then((res) => res.json())
       .then((data) => {
@@ -32,7 +31,6 @@ const Widget = ({ nickname, data }) => {
       getUser(nickname);
     }
     const interval = setInterval(() => {
-      console.log("인터벌 도는 중");
       if (nickname) {
         getUser(nickname);
       }
