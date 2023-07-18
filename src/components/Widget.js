@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import ImagesDir from "../images";
 import Image from "next/image";
 
-const Widget = ({ nickname }) => {
+const Widget = ({ nickname, data }) => {
   const [userInfo, setUserInfo] = useState({
     playerId: "",
     nickname: "",
@@ -27,9 +27,12 @@ const Widget = ({ nickname }) => {
 
   /* 데이터 페칭 */
   useEffect(() => {
-    if (nickname) {
-      getUser(nickname);
-    }
+    const interval = setInterval(() => {
+      if (nickname) {
+        getUser(nickname);
+      }
+    }, 300000);
+    return () => clearInterval(interval);
   }, [nickname]);
 
   /* 아래 두 이펙트 훅은 이미지 설정을 위한 이펙트 훅이다.
