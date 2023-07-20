@@ -15,9 +15,9 @@
 
 사용스택 : Nextjs, Sass, Javascript, Netlify
 
+문의 : dev.sunghoon@gmail.com
 
 ## 사용법
-
 
 ![](https://velog.velcdn.com/images/planethoon/post/ad2117a2-4b66-48ed-b379-89b268dc4042/image.png)
 (첫화면)
@@ -69,6 +69,6 @@ API 제한이 있어서 사실 5분으로 했다가, 스트리머가 얼마 없�
 
 cyptools로 도메인을 산 이유는.. 랭크 위젯을 시작으로 하나 둘 기능을 추가해보려고 생각 중이기 때문입니다.
 
-사용해보시다가 오류가 발생하거나, 제안주실 점이 있으시다면, 하단의 메일로 전달 부탁드려요.
+사용해보시다가 오류가 발생하거나, 제안주실 점이 있으시다면, 메일로 전달 부탁드려요.
 
 감사합니다.
