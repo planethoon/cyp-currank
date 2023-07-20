@@ -3,7 +3,7 @@
 ## 사이퍼즈 스트리머 랭크 위젯
 
 <aside>
-➡️ [https://cyptools.xyz](https://cyptools.xyz)
+➡️ https://cyptools.xyz
 
 </aside>
 
