@@ -13,7 +13,11 @@
 
 그래서 만들었습니다.
 
-**사이퍼즈 스트리머 랭크 위젯**
+사용스택 : Nextjs, Sass, Javascript, Netlify
+
+
+## 사용법
+
 
 ![](https://velog.velcdn.com/images/planethoon/post/ad2117a2-4b66-48ed-b379-89b268dc4042/image.png)
 (첫화면)
