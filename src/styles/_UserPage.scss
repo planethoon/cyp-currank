@@ -1,0 +1,38 @@
+.user--background {
+  @include flexbox();
+  flex-direction: column;
+  background: rgb(144, 205, 251);
+  background: linear-gradient(
+    149deg,
+    rgba(144, 205, 251, 1) 0%,
+    rgba(183, 189, 240, 1) 70%,
+    rgba(223, 173, 229, 1) 100%
+  );
+  height: 100vh;
+}
+
+.user--container {
+  @include flexbox();
+  flex-direction: column;
+  justify-content: flex-start;
+  // background-color: white;
+  // border: 2px solid black;
+  height: 100vh;
+  width: 768px;
+  // margin: 24px;
+}
+
+.user--info {
+  @include userContainer(180px);
+  margin-top: 24px;
+}
+
+.user--summary {
+  @include userContainer(300px);
+  margin-top: 8px;
+}
+
+.user--match--container {
+  @include userContainer(200px);
+  margin-top: 8px;
+}

@@ -36,7 +36,9 @@ export default function App() {
   return (
     <div className="App">
       <div className="main--background">
-        <Header />
+        <div className="main--title">
+          <span>사이퍼즈 스트리머 랭크 위젯</span>
+        </div>
         <div className="main--wrapper">
           <div className="main--preview">
             <div className="main--preview--header">

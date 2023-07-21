@@ -10,6 +10,16 @@ $sub2-color: #dfade5;
   align-items: center;
 }
 
+@mixin userContainer($height) {
+  @include flexbox();
+  height: $height;
+  flex-direction: row;
+  width: 100%;
+  background-color: whitesmoke;
+  border-radius: 5px;
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.2);
+}
+
 //fonts
 @import "./font";
 
@@ -22,3 +32,4 @@ $sub2-color: #dfade5;
 @import "./Header";
 @import "./Form";
 @import "./Footer";
+@import "./UserPage";
