@@ -20,6 +20,13 @@ $sub2-color: #dfade5;
   box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.2);
 }
 
+@mixin btn {
+  @include flexbox();
+  width: 80px;
+  height: 32px;
+  cursor: pointer;
+}
+
 //fonts
 @import "./font";
 
