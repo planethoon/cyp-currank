@@ -1,7 +1,5 @@
 import React from "react";
 
-const UserSummary = () => {
+export default function UserSummary() {
   return <div className="user--summary"></div>;
-};
-
-export default UserSummary;
+}

@@ -38,5 +38,5 @@ export default async function handler(req, res) {
     return;
   }
 
-  //https://api.neople.co.kr/cy/players/16202b49d2c2a242eb0fca2b28475a8b/matches?gameTypeId=rating&limit=1000&apikey=AbpcSiDnPoLiX0oPUGH3VCN1RRz48BOx
+  //
 }

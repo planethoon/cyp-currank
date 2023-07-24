@@ -1,12 +1,16 @@
 import { useRouter } from "next/router";
-
-import Widget from "../../components/Widget";
-import Footer from "../../components/Footer";
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import UserInfo from "../../components/user/userInfo";
 
+// components
+import UserInfo from "../../components/user/userInfo";
+import UserSummary from "../../components/user/userSummary";
+import Widget from "../../components/Widget";
+import Footer from "../../components/Footer";
+
+// custom hooks
 import { useModal } from "../../hooks/useModal";
+import UserMatch from "../../components/user/userMatch";
 
 export async function getServerSideProps(context) {
   const host = context.req.headers.host;
@@ -23,8 +27,8 @@ export default function UserPageSlug({ host }) {
     <div className="user--background">
       <div className="user--container">
         <UserInfo nickname={nickname} host={host} switchModal={switchModal} />
-        <div className="user--summary"></div>
-        <div className="user--match--container"></div>
+        <UserSummary />
+        <UserMatch />
       </div>
       <div
         className={
