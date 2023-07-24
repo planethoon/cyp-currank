@@ -3,9 +3,9 @@ import { useRouter } from "next/router";
 import Widget from "../../components/Widget";
 import Footer from "../../components/Footer";
 import { useEffect, useState } from "react";
+import Image from "next/image";
 
 export async function getServerSideProps(context) {
-  console.log(context.req.headers.host);
   const host = context.req.headers.host;
   return { props: { host } };
 }
@@ -19,16 +19,19 @@ export default function UserPageSlug({ host }) {
 
   const { asPath } = router;
 
-  useEffect(() => {
-    console.log(host);
-  }, [host]);
-
   return (
     <div className="user--background">
       <div className="user--container">
         <div className="user--info">
           <div className="user--info--container">
-            <div className="user--info--character">사진</div>
+            <div className="user--info--character">
+              <Image
+                src={`https://img-api.neople.co.kr/cy/characters/627db8b10d95ba73f0d2765130430454`}
+                alt={"케니스"}
+                height="80"
+                width="80"
+              />
+            </div>
             <div className="user--info--textWrapper">
               <div className="user--info--nickname">{nickname}</div>
               <div className="user--info--refresh">갱신</div>

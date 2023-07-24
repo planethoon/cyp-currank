@@ -1,18 +1,18 @@
-require("dotenv").config();
-
 export default async function handler(req, res) {
   const key = process.env.API_KEY;
   const endpoint = "https://api.neople.co.kr/cy";
-  const { nickname } = req.query;
 
-  let nicknameRes, nicknameJson, matchingRes, matchingJson, rankRes, rankJson;
   let userData = {
     playerId: "",
     nickname: "",
     tierName: "",
+    characterId: "",
     ratingPoint: 0,
     rank: 0,
+    matches: {},
   };
+
+  let nicknameRes, nicknameJson, matchingRes, matchingJson, rankRes, rankJson;
 
   try {
     nicknameRes = await fetch(
@@ -20,8 +20,6 @@ export default async function handler(req, res) {
     );
     nicknameJson = await nicknameRes.json();
     userData.playerId = nicknameJson.rows[0].playerId;
-    userData.nickname = nicknameJson.rows[0].nickname;
-    userData.characterId = nicknameJson.rows[0].represent.characterId;
   } catch (err) {
     console.error("닉네임 조회 에러", err);
     res.status(404).json({ message: "player not found" });
@@ -33,7 +31,6 @@ export default async function handler(req, res) {
       endpoint + `/players/${userData.playerId}?apikey=${key}`
     );
     matchingJson = await matchingRes.json();
-    userData.nickname = await matchingJson.nickname;
     userData.tierName = await matchingJson.tierName;
     userData.ratingPoint = await matchingJson.ratingPoint;
   } catch (err) {
@@ -41,18 +38,5 @@ export default async function handler(req, res) {
     return;
   }
 
-  try {
-    rankRes = await fetch(
-      endpoint +
-        `/ranking/ratingpoint?playerId=${userData.playerId}&apikey=${key}`
-    );
-    rankJson = await rankRes.json();
-    if (rankJson.rows[0]) {
-      userData.rank = await rankJson.rows[0].rank;
-    }
-    res.status(200).json(userData);
-  } catch (err) {
-    console.error("랭킹 조회 에러", err);
-    return;
-  }
+  //https://api.neople.co.kr/cy/players/16202b49d2c2a242eb0fca2b28475a8b/matches?gameTypeId=rating&limit=1000&apikey=AbpcSiDnPoLiX0oPUGH3VCN1RRz48BOx
 }
