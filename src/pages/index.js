@@ -26,7 +26,7 @@ export default function App() {
   };
 
   const checkNickname = (nickname) => {
-    fetch(`/api/nicknameCheck/${nickname}`)
+    fetch(`/api/checkNickname/${nickname}`)
       .then((res) => res.json())
       .then((data) => {
         setCheckPlayer(data);
