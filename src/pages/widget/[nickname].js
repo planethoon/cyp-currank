@@ -14,6 +14,6 @@ export default function UsernameSlug() {
   );
 }
 
-UsernameSlug.addFooter = function addFooter(page) {
+UsernameSlug.checkSubLayout = function checkSubLayout(page) {
   return <div>{page}</div>;
 };

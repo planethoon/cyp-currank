@@ -44,7 +44,7 @@ export default function UserPageSlug({ host }) {
   );
 }
 
-UserPageSlug.addFooter = function addFooter(page) {
+UserPageSlug.checkSubLayout = function checkSubLayout(page) {
   return (
     <div>
       {page}

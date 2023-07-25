@@ -21,7 +21,6 @@ export default async function handler(req, res) {
     nicknameJson = await nicknameRes.json();
     userData.playerId = nicknameJson.rows[0].playerId;
     userData.nickname = nicknameJson.rows[0].nickname;
-    userData.characterId = nicknameJson.rows[0].represent.characterId;
   } catch (err) {
     console.error("닉네임 조회 에러", err);
     res.status(404).json({ message: "player not found" });

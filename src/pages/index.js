@@ -71,7 +71,7 @@ export default function App() {
   );
 }
 
-App.addFooter = function addFooter(page) {
+App.checkSubLayout = function checkSubLayout(page) {
   return (
     <Layout>
       <Footer>{page}</Footer>

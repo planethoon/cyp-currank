@@ -1,14 +1,25 @@
 import Layout from "../components/Layout";
 import "../styles/index.scss";
 
+import { QueryClient, QueryClientProvider } from "react-query";
+
+const queryClient = new QueryClient();
+
 export default function MyApp({ Component, pageProps }) {
-  const checkFooter =
-    Component.addFooter ||
+  const checkSubLayout =
+    Component.checkSubLayout ||
     (() => {
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>;
+      <QueryClientProvider client={queryClient}>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+        ;
+      </QueryClientProvider>;
     });
 
-  return checkFooter(<Component {...pageProps} />);
+  return checkSubLayout(
+    <QueryClientProvider client={queryClient}>
+      <Component {...pageProps} />
+    </QueryClientProvider>
+  );
 }
