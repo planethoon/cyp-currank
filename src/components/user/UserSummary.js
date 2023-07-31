@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import UserSummaryRank from "./UserSummaryRank";
+import UserSummaryRecent from "./UserSummaryRecent";
 
 export default function UserSummary() {
   const userInfo = {
@@ -17,6 +18,7 @@ export default function UserSummary() {
   return (
     <div className="user--summary">
       <UserSummaryRank userInfo={userInfo} />
+      <UserSummaryRecent />
     </div>
   );
 }
