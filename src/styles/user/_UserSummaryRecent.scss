@@ -4,7 +4,11 @@
   margin-left: 20px;
 }
 
+.user--summary--chartTitle {
+  margin-bottom: 8px;
+}
+
 .user--summary--chart {
   @include flexbox();
-  border: 1px solid black;
+  // border: 1px solid black;
 }

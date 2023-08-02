@@ -27,4 +27,5 @@
 .user--summary {
   @include userContainer(250px);
   margin-top: 8px;
+  justify-content: space-around;
 }

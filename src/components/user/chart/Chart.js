@@ -15,8 +15,8 @@ export default function Chart({ value, classType }) {
       <div className="chart--positionIcon">
         <Image
           src={ImagesDir[classType]}
-          width="24px"
-          height="24px"
+          width="30px"
+          height="30px"
           alt="position"
         />
       </div>
