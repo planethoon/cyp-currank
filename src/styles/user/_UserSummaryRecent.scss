@@ -1,0 +1,10 @@
+.user--summary--container {
+  @include flexbox();
+  flex-direction: column;
+  margin-left: 20px;
+}
+
+.user--summary--chart {
+  @include flexbox();
+  border: 1px solid black;
+}
