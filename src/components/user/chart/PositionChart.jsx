@@ -2,7 +2,7 @@ import { useState } from "react";
 import Image from "next/image";
 import ImagesDir from "../../../images";
 
-export default function Chart({ value, classType }) {
+export default function PositionChart({ value, classType }) {
   return (
     <div className="chart--container">
       <div className="chart--chartWrapper">

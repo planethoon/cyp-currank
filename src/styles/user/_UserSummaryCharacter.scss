@@ -1,0 +1,8 @@
+.user--summary--characterContainer {
+  // @include boxCheck(black);
+  @include flexbox;
+  justify-content: flex-start;
+  flex-direction: column;
+  width: 240px;
+  height: 200px;
+}

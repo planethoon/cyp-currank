@@ -61,11 +61,6 @@
   }
 }
 
-.user--match--container {
-  @include userContainer(200px);
-  margin-top: 8px;
-}
-
 .user--widget--container {
   @include flexbox();
   flex-direction: column;

@@ -1,0 +1,15 @@
+.user--summary--positionContainer {
+  @include flexbox;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-left: 16px;
+  height: 200px;
+}
+
+.user--summary--chartTitle {
+  margin-bottom: 16px;
+}
+
+.user--summary--chart {
+  @include flexbox;
+}

@@ -3,14 +3,14 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 
 // components
-import UserInfo from "../../components/user/userInfo";
-import UserSummary from "../../components/user/userSummary";
+import UserInfo from "../../components/user/UserInfo";
+import UserSummary from "../../components/user/UserSummary";
 import Widget from "../../components/Widget";
 import Footer from "../../components/Footer";
 
 // custom hooks
 import { useModal } from "../../hooks/useModal";
-import UserMatch from "../../components/user/userMatch";
+import UserMatch from "../../components/user/UserMatch";
 
 export async function getServerSideProps(context) {
   const host = context.req.headers.host;

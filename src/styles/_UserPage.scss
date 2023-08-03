@@ -22,10 +22,17 @@
   width: 768px;
   padding-bottom: 128px;
   // margin: 24px;
+  gap: 8px;
 }
 
 .user--summary {
   @include userContainer(250px);
-  margin-top: 8px;
-  justify-content: space-around;
+  // justify-content: space-around;
+}
+
+.user--summary--rankWinrateWrapper {
+  // @include boxCheck(blue);
+  @include flexbox;
+  flex-direction: column;
+  gap: 8px 0;
 }
