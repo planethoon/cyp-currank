@@ -6,3 +6,27 @@
   width: 240px;
   height: 200px;
 }
+
+.user--summary--characterList {
+  @include flexbox;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.recentCharacter--container {
+  @include flexbox;
+}
+.recentCharacter--pic {
+  // @include boxCheck(black);
+  border: 1px solid rgb(197, 197, 197);
+  border-radius: 50%;
+  overflow: hidden;
+  width: 45px;
+  height: 45px;
+  margin-right: 8px;
+}
+
+.recentCharacter--text {
+  @include flexbox;
+  flex-direction: column;
+}

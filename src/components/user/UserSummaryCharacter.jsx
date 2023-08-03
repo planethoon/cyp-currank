@@ -1,4 +1,5 @@
 import React from "react";
+import Character from "./recentCharacter/Character";
 
 function UserSummaryCharacter() {
   return (
@@ -6,12 +7,10 @@ function UserSummaryCharacter() {
       <span className="user--summary--chartTitle">
         최근 캐릭터 선호도(90일)
       </span>
-      <div>
-        <div>이미지</div>
-        <div>
-          <span>{`플레이: 5회 승률: 53%`}</span>
-          <span>{`5킬 2데스 4.2도움`}</span>
-        </div>
+      <div className="user--summary--characterList">
+        <Character />
+        <Character />
+        <Character />
       </div>
     </div>
   );
