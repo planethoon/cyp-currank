@@ -1,0 +1,183 @@
+.match--container {
+  @include boxCheck(rgba(128, 128, 128, 0.6));
+  @include flexbox;
+  width: 820px;
+  height: 120px;
+  border-radius: 6px;
+  border-left: 10px solid #37a2eb;
+  justify-content: flex-start;
+  gap: 0 4px;
+  background-color: #37a3eb2f;
+  position: relative;
+  border-right: 0;
+}
+
+/* 
+
+status below
+
+*/
+.match--status {
+  // @include boxCheck(red);
+  @include flexbox;
+  flex-direction: column;
+  padding-left: 10px;
+  height: 100%;
+  font-weight: 700;
+}
+
+.match--status--upWrapper {
+  // @include boxCheck(black);
+
+  flex: 1 0 auto;
+  width: 100px;
+  border-bottom: 1px solid #b9b9b9;
+  padding-top: 10px;
+}
+.match--status--party {
+  @include flexbox;
+  justify-content: flex-start;
+}
+
+.match--status--downWrapper {
+  // @include boxCheck(black);
+  width: 100px;
+  flex: 1 0 auto;
+  padding-top: 10px;
+}
+
+/* 
+
+character below
+
+*/
+.match--character {
+  // @include boxCheck(red);
+  width: 60px;
+  height: 60px;
+  margin-left: 30px;
+}
+
+.match--character--wrapper {
+  position: relative;
+  width: 60px;
+  height: 60px;
+}
+
+.match--character--img {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  z-index: 1;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.match--character--position {
+  // @include boxCheck(blue);
+  position: absolute;
+  z-index: 2;
+  top: -10px;
+  left: -10px;
+}
+.match--character--level {
+  // @include boxCheck(red);
+  @include flexbox;
+  position: absolute;
+  z-index: 2;
+  bottom: -5px;
+  right: 0px;
+  border-radius: 50%;
+  border: 0.5px solid grey;
+  background-color: whitesmoke;
+  font-size: 14px;
+  width: 20px;
+  height: 20px;
+  & > span {
+    margin-top: 3px;
+  }
+}
+
+/*
+
+result below
+
+*/
+
+.match--result {
+  // @include boxCheck(red);
+  @include flexbox;
+  flex-direction: column;
+  margin-left: 20px;
+  gap: 6px 0;
+}
+
+.match--kda {
+  // @include boxCheck(black);
+  @include flexbox;
+  flex-direction: column;
+}
+
+.match--kda--text {
+  // font-size: 20px;
+  font-weight: 700;
+  &:first-child {
+    font-size: 20px;
+  }
+}
+
+.match--attribute {
+  @include flexbox;
+  gap: 0 4px;
+}
+
+/*
+
+stats below
+
+*/
+
+.match--stats {
+  margin-left: 20px;
+}
+
+.match--textWrapper {
+  @include flexbox;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 4px 0;
+}
+
+.match--statsText {
+  @include flexbox;
+  justify-content: space-between;
+  width: 100px;
+}
+
+/*
+
+playerlist below
+
+*/
+
+/*
+
+readmore btn below
+
+*/
+
+.match--moreInfoBtn {
+  // @include boxCheck(blue);
+  @include flexbox;
+  flex-direction: column;
+  justify-content: flex-end;
+  position: absolute;
+  background-color: #37a2eb;
+  border-radius: 0 6px 6px 0;
+  height: 120px;
+  width: 30px;
+  right: 0px;
+  & > span {
+    margin-bottom: 5px;
+    // color:;
+  }
+}
