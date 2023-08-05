@@ -94,7 +94,22 @@ function Match() {
           </div>
         </div>
       </div>
-      <div className="match--member"></div>
+      <div className="match--playerlist">
+        <div className="match--playerlist--wrapper">
+          <ListPlayer nickname={"ㅇㅇㅇㅇㅇㅇㅇ"} />
+          <ListPlayer nickname={"ㅇㅇㅇㅇㅇㅇㅇ"} />
+          <ListPlayer nickname={"ㅇㅇㅇ"} />
+          <ListPlayer nickname={"ㅇㅇㅇㅇㅇㅇㅇ"} />
+          <ListPlayer nickname={"ㅇㅇASD"} />
+        </div>
+        <div className="match--playerlist--wrapper">
+          <ListPlayer nickname={"ㅇㅇㅇㅇㅇㅇㅇ"} />
+          <ListPlayer nickname={"ㅇㅇㅇㅇㅇㅇㅇ"} />
+          <ListPlayer nickname={"ㅇㅇㅇㅇㅇㅇㅇ"} />
+          <ListPlayer nickname={"ㅇㅇㅇㅇㅇㅇㅇ"} />
+          <ListPlayer nickname={"ㅇㅇㅇㅇ"} />
+        </div>
+      </div>
       <div className="match--moreInfoBtn">
         <span>
           <FontAwesomeIcon icon={faCaretDown} />
@@ -105,3 +120,29 @@ function Match() {
 }
 
 export default Match;
+
+export const ListPlayer = ({ nickname, position, character }) => {
+  return (
+    <div className="listPlayer--wrapper">
+      <div className="listPlayer--position">
+        <Image
+          src={"http://via.placeholder.com/150"}
+          alt="position"
+          width="18"
+          height="18"
+        />
+      </div>
+      <div className="listPlayer--character">
+        <Image
+          src={"http://via.placeholder.com/150"}
+          alt="character"
+          width="20"
+          height="20"
+        />
+      </div>
+      <div className="listPlayer--nickname">
+        <span>{nickname}</span>
+      </div>
+    </div>
+  );
+};
