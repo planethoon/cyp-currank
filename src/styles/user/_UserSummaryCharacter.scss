@@ -15,7 +15,7 @@
 .user--summary--characterList {
   @include flexbox;
   flex-direction: column;
-  gap: 10px;
+  gap: 24px;
 }
 
 .recentCharacter--container {

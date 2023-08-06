@@ -1,10 +1,30 @@
 import Image from "next/image";
 import React from "react";
 import ImagesDir from "../../../images";
+import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretDown, faCaretUp } from "@fortawesome/free-solid-svg-icons";
+import { matchDetail } from "../../../dummy";
 
 function Match() {
+  const winPlayer = matchDetail.players.filter((e) => {
+    for (let i = 0; i < 10; i++) {
+      if (e.playerId === matchDetail.teams[0].players[i]) {
+        return true;
+      }
+    }
+    return false;
+  });
+
+  const losePlayer = matchDetail.players.filter((e) => {
+    for (let i = 0; i < 10; i++) {
+      if (e.playerId === matchDetail.teams[1].players[i]) {
+        return true;
+      }
+    }
+    return false;
+  });
+
   return (
     <div className="match--container">
       <div className="match--status">
@@ -96,18 +116,28 @@ function Match() {
       </div>
       <div className="match--playerlist">
         <div className="match--playerlist--wrapper">
-          <ListPlayer nickname={"ㅇㅇㅇㅇㅇㅇㅇ"} />
-          <ListPlayer nickname={"ㅇㅇㅇㅇㅇㅇㅇ"} />
-          <ListPlayer nickname={"ㅇㅇㅇ"} />
-          <ListPlayer nickname={"ㅇㅇㅇㅇㅇㅇㅇ"} />
-          <ListPlayer nickname={"ㅇㅇASD"} />
+          {winPlayer.map((e, i) => {
+            return (
+              <ListPlayer
+                key={e.playerId}
+                nickname={e.nickname}
+                position={e.position.name}
+                character={e.playInfo.characterId}
+              />
+            );
+          })}
         </div>
         <div className="match--playerlist--wrapper">
-          <ListPlayer nickname={"ㅇㅇㅇㅇㅇㅇㅇ"} />
-          <ListPlayer nickname={"ㅇㅇㅇㅇㅇㅇㅇ"} />
-          <ListPlayer nickname={"ㅇㅇㅇㅇㅇㅇㅇ"} />
-          <ListPlayer nickname={"ㅇㅇㅇㅇㅇㅇㅇ"} />
-          <ListPlayer nickname={"ㅇㅇㅇㅇ"} />
+          {losePlayer.map((e) => {
+            return (
+              <ListPlayer
+                key={e.playerId}
+                nickname={e.nickname}
+                position={e.position.name}
+                character={e.playInfo.characterId}
+              />
+            );
+          })}
         </div>
       </div>
       <div className="match--moreInfoBtn">
@@ -122,11 +152,22 @@ function Match() {
 export default Match;
 
 export const ListPlayer = ({ nickname, position, character }) => {
+  const renamePositionKoreanToEnglish = (position) => {
+    if (position === "탱커") {
+      return "tanker";
+    } else if (position === "근거리딜러") {
+      return "melee";
+    } else if (position === "원거리딜러") {
+      return "range";
+    } else {
+      return "supporter";
+    }
+  };
   return (
     <div className="listPlayer--wrapper">
       <div className="listPlayer--position">
         <Image
-          src={"http://via.placeholder.com/150"}
+          src={ImagesDir[renamePositionKoreanToEnglish(position)]}
           alt="position"
           width="18"
           height="18"
@@ -134,14 +175,14 @@ export const ListPlayer = ({ nickname, position, character }) => {
       </div>
       <div className="listPlayer--character">
         <Image
-          src={"http://via.placeholder.com/150"}
+          src={`https://img-api.neople.co.kr/cy/characters/${character}`}
           alt="character"
           width="20"
           height="20"
         />
       </div>
       <div className="listPlayer--nickname">
-        <span>{nickname}</span>
+        <Link href={`/user/${nickname}`}>{nickname}</Link>
       </div>
     </div>
   );
