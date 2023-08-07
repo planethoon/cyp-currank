@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import ImagesDir from "../images";
 import Image from "next/image";
 import { useQuery, useQueryClient } from "react-query";
-import { useQueryUserInfo } from "../react-query/useQueryUserInfo";
+import { useQueryUserInfo } from "../react-query/useUserInfoQuery";
 
 const Widget = ({ nickname = solidity, data }) => {
   const [userInfo, setUserInfo] = useState({

@@ -2,8 +2,6 @@ import React from "react";
 import { useQuery, useQueryClient } from "react-query";
 
 export function useQueryUserInfo(nickname) {
-  const queryClient = useQueryClient();
-
   const userInfo = useQuery({
     queryKey: ["userinfo"],
     queryFn: () => {

@@ -32,11 +32,15 @@ status below
 
 .match--status--upWrapper {
   // @include boxCheck(black);
-
+  display: flex;
+  flex-direction: column;
   flex: 1 0 auto;
-  width: 100px;
+  width: 120px;
   border-bottom: 1px solid #b9b9b9;
   padding-top: 10px;
+  & > span:last-child {
+    font-size: 14px;
+  }
 }
 .match--status--party {
   @include flexbox;
@@ -45,7 +49,9 @@ status below
 
 .match--status--downWrapper {
   // @include boxCheck(black);
-  width: 100px;
+  display: flex;
+  flex-direction: column;
+  width: 120px;
   flex: 1 0 auto;
   padding-top: 10px;
 }

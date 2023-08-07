@@ -5,44 +5,72 @@ import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretDown, faCaretUp } from "@fortawesome/free-solid-svg-icons";
 import { matchDetail } from "../../../dummy";
+import useMatchDetailQuery from "../../../react-query/useMatchDetailQuery";
 
-function Match() {
-  const winPlayer = matchDetail.players.filter((e) => {
-    for (let i = 0; i < 10; i++) {
-      if (e.playerId === matchDetail.teams[0].players[i]) {
-        return true;
+function Match({ matchInfo }) {
+  const { data, isLoading, status } = useMatchDetailQuery(matchInfo.matchId);
+  let winPlayer = [],
+    losePlayer = [];
+
+  console.log(matchInfo);
+
+  if (status === "success") {
+    winPlayer = data.players.filter((e) => {
+      for (let i = 0; i < 10; i++) {
+        if (e.playerId === data.teams[0].players[i]) {
+          return true;
+        }
       }
-    }
-    return false;
-  });
+      return false;
+    });
 
-  const losePlayer = matchDetail.players.filter((e) => {
-    for (let i = 0; i < 10; i++) {
-      if (e.playerId === matchDetail.teams[1].players[i]) {
-        return true;
+    losePlayer = data.players.filter((e) => {
+      for (let i = 0; i < 10; i++) {
+        if (e.playerId === data.teams[1].players[i]) {
+          return true;
+        }
       }
-    }
-    return false;
-  });
+      return false;
+    });
+  }
 
-  const [isWon, setIsWon] = useState(false);
+  const setPositionImage = (position) => {
+    if (position === "탱커") {
+      return ImagesDir["tanker"];
+    } else if (position === "근거리딜러") {
+      return ImagesDir["melee"];
+    } else if (position === "원거리딜러") {
+      return ImagesDir["range"];
+    } else {
+      return ImagesDir["supporter"];
+    }
+  };
 
   return (
-    <div className={`match--container ${!isWon && "lose"}`}>
+    <div
+      className={`match--container ${
+        !(matchInfo.playInfo.result === "win") && "lose"
+      }`}
+    >
       <div className="match--status">
         <div className="match--status--upWrapper">
-          <span>{`${isWon ? "승리" : "패배"} · 솔로`}</span>
+          <span>{`${
+            matchInfo.playInfo.result === "win" ? "승리" : "패배"
+          } · 솔로`}</span>
+          <span>{matchInfo.map.name}</span>
         </div>
         <div className="match--status--downWrapper">
-          <div className="match--status--date">08-04 14:33</div>
-          <div className="match--status--ingametime">12분 52초</div>
+          <div className="match--status--date">{matchInfo.date.slice(5)}</div>
+          <div className="match--status--ingametime">{`${Math.floor(
+            matchInfo.playInfo.playTime / 60
+          )}분 ${matchInfo.playInfo.playTime % 60}초`}</div>
         </div>
       </div>
       <div className="match--character">
         <div className="match--character--wrapper">
           <div className="match--character--img">
             <Image
-              src={`https://img-api.neople.co.kr/cy/characters/627db8b10d95ba73f0d2765130430454`}
+              src={`https://img-api.neople.co.kr/cy/characters/${matchInfo.playInfo.characterId}`}
               width="60"
               height="60"
               alt="position"
@@ -50,26 +78,33 @@ function Match() {
           </div>
           <div className="match--character--position">
             <Image
-              src={ImagesDir["melee"]}
+              src={setPositionImage(matchInfo.position.name)}
               width="30"
               height="30"
               alt="position"
             />
           </div>
           <div className="match--character--level">
-            <span>52</span>
+            <span>{matchInfo.playInfo.level}</span>
           </div>
         </div>
       </div>
       <div className="match--result">
         <div className="match--kda">
-          <div className="match--kda--text">5 / 3 / 12</div>
-          <div className="match--kda--text">평점: 5.66</div>
+          <div className="match--kda--text">{`${matchInfo.playInfo.killCount} / ${matchInfo.playInfo.deathCount} / ${matchInfo.playInfo.assistCount}`}</div>
+          <div className="match--kda--text">
+            {`평점: ` +
+              `${
+                (matchInfo.playInfo.killCount +
+                  matchInfo.playInfo.assistCount) /
+                matchInfo.playInfo.deathCount
+              }`.slice(0, 4)}
+          </div>
         </div>
         <div className="match--attribute">
           <div className="match--attribute--img">
             <Image
-              src={`https://img-api.neople.co.kr/cy/position-attributes/13ed96b8d10b40b488059271f940a37e
+              src={`https://img-api.neople.co.kr/cy/position-attributes/${matchInfo.position.attribute[0].id}
               `}
               width="35"
               height="35"
@@ -78,7 +113,7 @@ function Match() {
           </div>
           <div className="match--attribute--img">
             <Image
-              src={`https://img-api.neople.co.kr/cy/position-attributes/ff6a4b6ab1d0fe84d63cace2e0c24a69
+              src={`https://img-api.neople.co.kr/cy/position-attributes/${matchInfo.position.attribute[1].id}
               `}
               width="35"
               height="35"
@@ -87,7 +122,7 @@ function Match() {
           </div>
           <div className="match--attribute--img">
             <Image
-              src={`https://img-api.neople.co.kr/cy/position-attributes/d10f92492701526d64b18428ec8ce0d3
+              src={`https://img-api.neople.co.kr/cy/position-attributes/${matchInfo.position.attribute[2].id}
               `}
               width="35"
               height="35"
@@ -100,19 +135,24 @@ function Match() {
         <div className="match--textWrapper">
           <div className="match--statsText">
             <span>가해량:</span>
-            <span>43.2k</span>
+            <span>{`${(matchInfo.playInfo.attackPoint / 1000).toFixed(
+              1
+            )}k`}</span>
           </div>
+
           <div className="match--statsText">
             <span>피해량:</span>
-            <span>0.9k</span>
+            <span>{`${(matchInfo.playInfo.damagePoint / 1000).toFixed(
+              1
+            )}k`}</span>
           </div>
           <div className="match--statsText">
             <span>시야점수:</span>
-            <span>231</span>
+            <span>{matchInfo.playInfo.sightPoint}</span>
           </div>
           <div className="match--statsText">
             <span>전투점수:</span>
-            <span>151</span>
+            <span>{matchInfo.playInfo.battlePoint}</span>
           </div>
         </div>
       </div>
@@ -142,7 +182,11 @@ function Match() {
           })}
         </div>
       </div>
-      <div className={`match--moreInfoBtn ${!isWon && `lose`}`}>
+      <div
+        className={`match--moreInfoBtn ${
+          !(matchInfo.playInfo.result === "win") && `lose`
+        }`}
+      >
         <span>
           <FontAwesomeIcon icon={faCaretDown} />
         </span>
@@ -184,7 +228,9 @@ export const ListPlayer = ({ nickname, position, character }) => {
         />
       </div>
       <div className="listPlayer--nickname">
-        <Link href={`/user/${nickname}`}>{nickname}</Link>
+        <Link href={`/user/${nickname}`}>
+          <span>{nickname}</span>
+        </Link>
       </div>
     </div>
   );

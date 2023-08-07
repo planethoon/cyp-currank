@@ -115,4 +115,12 @@ export async function getMatches(playerId, gametype) {
   return matches;
 }
 
-export async function getMatchDetail(matchId) {}
+export async function getMatchDetail(matchId) {
+  const key = process.env.API_KEY;
+  const endpoint = "https://api.neople.co.kr/cy";
+  const url = `/matches/${matchId}?&apikey=${key}`;
+
+  let res = await fetch(endpoint + url);
+  let json = await res.json();
+  return json;
+}
