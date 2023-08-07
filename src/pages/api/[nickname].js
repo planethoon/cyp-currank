@@ -1,4 +1,4 @@
-import { getPlayerId, getRanking, getRating } from "./apiFunctions";
+import { getPlayerId, getRanking, getUserDetail } from "./apiFunctions";
 
 require("dotenv").config();
 
@@ -25,9 +25,9 @@ export default async function handler(req, res) {
   }
 
   try {
-    userData = { ...userData, ...(await getRating(userData.playerId)) };
+    userData = { ...userData, ...(await getUserDetail(userData.playerId)) };
   } catch (err) {
-    console.error("getRating 에러", err);
+    console.error("getUserDetail 에러", err);
     return;
   }
 

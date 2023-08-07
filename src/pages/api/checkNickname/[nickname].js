@@ -1,30 +1,22 @@
 require("dotenv").config();
+import { getPlayerId, getUserDetail } from "../apiFunctions";
 
 export default async function handler(req, res) {
-  const key = process.env.API_KEY;
-  const endpoint = "https://api.neople.co.kr/cy";
   const { nickname } = req.query;
-  let playerId, nicknameRes, nicknameJson, matchingRes, matchingJson, tierTest;
+  let userData = {
+    playerId: "",
+  };
 
   try {
-    nicknameRes = await fetch(
-      endpoint + `/players?nickname=${nickname}&wordType=match&apikey=${key}`
-    );
-    nicknameJson = await nicknameRes.json();
+    userData = { ...(await getPlayerId(nickname)) };
 
-    if (!nicknameJson.rows[0]) {
+    if (userData.status === "notfound") {
+      console.error("getPlayerId 에러");
       res.status(404).json({ playerFound: false, tierTest: false });
     } else {
-      playerId = await nicknameJson.rows[0].playerId;
-
-      // res.status(200).json({ message: "player found" });
-      matchingRes = await fetch(
-        endpoint + `/players/${playerId}?apikey=${key}`
-      );
-      matchingJson = await matchingRes.json();
-      tierTest = await matchingJson.tierTest;
-
-      res.status(200).json({ playerFound: true, tierTest });
+      userData = { ...userData, ...(await getUserDetail(userData.playerId)) };
+      res.status(200).json({ playerFound: true, tierTest: userData.tierTest });
+      console.log(userData);
     }
   } catch (err) {
     console.error("닉네임 조회 에러", err);
