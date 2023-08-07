@@ -37,7 +37,7 @@
 }
 
 .user--info--widget {
-  border: 1px solid black;
+  // border: 1px solid black;
   margin-right: 24px;
 }
 
@@ -54,10 +54,17 @@
 .user--info--wBtn {
   @include btn();
   box-sizing: border-box;
-  border: 3px solid red;
+  border: 0.5px solid grey;
+  border-radius: 4px;
+  transition: 0.1s;
 
   &:last-child {
     margin-left: 8px;
+  }
+
+  &:hover {
+    font-size: 18px;
+    transition: 0.2s;
   }
 }
 

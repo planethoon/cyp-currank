@@ -1,5 +1,5 @@
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 import ImagesDir from "../../../images";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -25,11 +25,13 @@ function Match() {
     return false;
   });
 
+  const [isWon, setIsWon] = useState(false);
+
   return (
-    <div className="match--container">
+    <div className={`match--container ${!isWon && "lose"}`}>
       <div className="match--status">
         <div className="match--status--upWrapper">
-          <span>승리 · 솔로</span>
+          <span>{`${isWon ? "승리" : "패배"} · 솔로`}</span>
         </div>
         <div className="match--status--downWrapper">
           <div className="match--status--date">08-04 14:33</div>
@@ -116,7 +118,7 @@ function Match() {
       </div>
       <div className="match--playerlist">
         <div className="match--playerlist--wrapper">
-          {winPlayer.map((e, i) => {
+          {winPlayer.map((e) => {
             return (
               <ListPlayer
                 key={e.playerId}
@@ -140,7 +142,7 @@ function Match() {
           })}
         </div>
       </div>
-      <div className="match--moreInfoBtn">
+      <div className={`match--moreInfoBtn ${!isWon && `lose`}`}>
         <span>
           <FontAwesomeIcon icon={faCaretDown} />
         </span>
