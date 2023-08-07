@@ -8,11 +8,9 @@ import { matchDetail } from "../../../dummy";
 import useMatchDetailQuery from "../../../react-query/useMatchDetailQuery";
 
 function Match({ matchInfo }) {
-  const { data, isLoading, status } = useMatchDetailQuery(matchInfo.matchId);
+  const { data, status } = useMatchDetailQuery(matchInfo.matchId);
   let winPlayer = [],
     losePlayer = [];
-
-  console.log(matchInfo);
 
   if (status === "success") {
     winPlayer = data.players.filter((e) => {
@@ -54,9 +52,12 @@ function Match({ matchInfo }) {
     >
       <div className="match--status">
         <div className="match--status--upWrapper">
-          <span>{`${
-            matchInfo.playInfo.result === "win" ? "승리" : "패배"
-          } · 솔로`}</span>
+          <span>
+            {`${matchInfo.playInfo.result === "win" ? "승리" : "패배"} · ` +
+              (matchInfo.playInfo.partyUserCount !== 0
+                ? `${matchInfo.playInfo.partyUserCount}인 파티`
+                : `솔로`)}
+          </span>
           <span>{matchInfo.map.name}</span>
         </div>
         <div className="match--status--downWrapper">
@@ -94,11 +95,13 @@ function Match({ matchInfo }) {
           <div className="match--kda--text">{`${matchInfo.playInfo.killCount} / ${matchInfo.playInfo.deathCount} / ${matchInfo.playInfo.assistCount}`}</div>
           <div className="match--kda--text">
             {`평점: ` +
-              `${
-                (matchInfo.playInfo.killCount +
-                  matchInfo.playInfo.assistCount) /
-                matchInfo.playInfo.deathCount
-              }`.slice(0, 4)}
+              (matchInfo.playInfo.deathCount
+                ? `${
+                    (matchInfo.playInfo.killCount +
+                      matchInfo.playInfo.assistCount) /
+                    matchInfo.playInfo.deathCount
+                  }`.slice(0, 4)
+                : `Perfect!`)}
           </div>
         </div>
         <div className="match--attribute">

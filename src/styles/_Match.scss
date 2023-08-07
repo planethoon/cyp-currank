@@ -38,6 +38,7 @@ status below
   width: 120px;
   border-bottom: 1px solid #b9b9b9;
   padding-top: 10px;
+  gap: 2px 0;
   & > span:last-child {
     font-size: 14px;
   }
@@ -54,6 +55,7 @@ status below
   width: 120px;
   flex: 1 0 auto;
   padding-top: 10px;
+  gap: 2px 0;
 }
 
 /* 
@@ -65,7 +67,7 @@ character below
   // @include boxCheck(red);
   width: 60px;
   height: 60px;
-  margin-left: 30px;
+  margin-left: 15px;
 }
 
 .match--character--wrapper {
@@ -201,10 +203,10 @@ ListPlayer inner Component
 .listPlayer--position {
   @include flexbox;
   // box-sizing: border-box;
-
   width: 20px;
   height: 20px;
 }
+
 .listPlayer--character {
   width: 20px;
   height: 20px;
