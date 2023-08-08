@@ -20,6 +20,7 @@ export async function getPlayerId(nickname) {
     playerId: json.rows[0].playerId,
     nickname: json.rows[0].nickname,
     characterId: json.rows[0].represent.characterId,
+    grade: json.rows[0].grade,
   };
 }
 
@@ -31,6 +32,7 @@ export async function getUserDetail(playerId) {
   let json = await res.json();
 
   return {
+    clanName: json.clanName,
     tierName: json.tierName,
     ratingPoint: json.ratingPoint,
     maxRatingPoint: json.maxRatingPoint,
@@ -60,7 +62,6 @@ export async function getMatches(playerId, gametype) {
   const endpoint = "https://api.neople.co.kr/cy";
   let matches = [];
 
-  console.log("matches 호출");
   const convertUnixTimeToString = (time) => {
     const date = new Date(time);
     const year = date.getFullYear();

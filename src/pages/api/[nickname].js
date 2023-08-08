@@ -3,8 +3,6 @@ import { getPlayerId, getRanking, getUserDetail } from "./apiFunctions";
 require("dotenv").config();
 
 export default async function handler(req, res) {
-  const key = process.env.API_KEY;
-  const endpoint = "https://api.neople.co.kr/cy";
   const { nickname } = req.query;
 
   let userData = {

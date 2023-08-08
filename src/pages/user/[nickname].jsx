@@ -1,7 +1,3 @@
-import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
-import Image from "next/image";
-
 // components
 import UserInfo from "../../components/user/UserInfo";
 import UserSummary from "../../components/user/UserSummary";
@@ -11,6 +7,7 @@ import Footer from "../../components/Footer";
 // custom hooks
 import { useModal } from "../../hooks/useModal";
 import UserMatch from "../../components/user/UserMatch";
+import useNicknameRouter from "../../hooks/useNickname";
 
 export async function getServerSideProps(context) {
   const host = context.req.headers.host;
@@ -18,8 +15,7 @@ export async function getServerSideProps(context) {
 }
 
 export default function UserPageSlug({ host }) {
-  const router = useRouter();
-  const { nickname } = router.query;
+  const { nickname } = useNicknameRouter();
 
   const [isOpen, switchModal, closeModal] = useModal();
 

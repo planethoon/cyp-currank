@@ -24,16 +24,16 @@ function Character({ data }) {
       <div className="recentCharacter--text">
         <span>
           {`플레이: ${playCount}회 승률: ` +
-            String((winCount / playCount) * 100).slice(0, 3) +
+            String(((winCount / playCount) * 100).toFixed(1)) +
             "%"}
         </span>
         <span>
           {`평균: ` +
-            `${killCount / playCount}`.slice(0, 3) +
+            `${(killCount / playCount).toFixed(1)}` +
             `킬 ` +
-            `${deathCount / playCount}`.slice(0, 3) +
+            `${(deathCount / playCount).toFixed(1)}` +
             `데스 ` +
-            `${assistCount / playCount}`.slice(0, 3) +
+            `${(assistCount / playCount).toFixed(1)}` +
             `도움`}
         </span>
       </div>

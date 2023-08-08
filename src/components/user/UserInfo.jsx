@@ -1,7 +1,9 @@
 import Image from "next/image";
 import { useState } from "react";
+import { useUserInfoQuery } from "../../react-query/useUserInfoQuery";
 
 export default function UserInfo({ host, nickname, switchModal }) {
+  const { data } = useUserInfoQuery(nickname);
   const [copy, setCopy] = useState("링크복사");
 
   return (
@@ -9,15 +11,16 @@ export default function UserInfo({ host, nickname, switchModal }) {
       <div className="user--info--container">
         <div className="user--info--character">
           <Image
-            src={`https://img-api.neople.co.kr/cy/characters/627db8b10d95ba73f0d2765130430454`}
-            alt={"케니스"}
+            src={`https://img-api.neople.co.kr/cy/characters/${data.characterId}`}
+            alt={"character"}
             height="80"
             width="80"
           />
         </div>
         <div className="user--info--textWrapper">
-          <div className="user--info--nickname">{nickname}</div>
-          <div className="user--info--refresh">갱신</div>
+          <div className="user--info--clanname">{data.clanName}</div>
+          <div className="user--info--nickname">{data.nickname}</div>
+          <div className="user--info--grade">{data.grade}급</div>
         </div>
       </div>
       <div className="user--info--widget">

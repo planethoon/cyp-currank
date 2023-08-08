@@ -1,17 +1,15 @@
-import React from "react";
-import { useQuery, useQueryClient } from "react-query";
+import { useQuery } from "react-query";
 
-export function useQueryUserInfo(nickname) {
-  const userInfo = useQuery({
+export function useUserInfoQuery(nickname) {
+  return useQuery({
     queryKey: ["userinfo", nickname],
-    queryFn: () => {
-      fetch(`/api/${nickname}`)
-        .then((res) => res.json())
-        .then((data) => {
-          console.log(data);
-        });
+    queryFn: async () => {
+      const res = await fetch(`/api/${nickname}`);
+      const json = await res.json();
+
+      return json;
     },
-    refetchInterval: 60000,
+    // refetchInterval: 60000,
     placeholderData: {
       characterId: "",
       playerId: "",
@@ -21,6 +19,4 @@ export function useQueryUserInfo(nickname) {
       rank: 0,
     },
   });
-
-  return userInfo;
 }

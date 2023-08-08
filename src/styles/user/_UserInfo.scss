@@ -5,29 +5,34 @@
 }
 
 .user--info--container {
-  @include flexbox();
+  @include flexbox;
   flex-direction: row;
-  border: 1px solid black;
   margin-left: 24px;
 }
 
 .user--info--character {
-  @include flexbox();
-  border: 3px solid blue;
+  @include flexbox;
+  // border: 3px solid blue;
   box-sizing: border-box;
   height: 80px;
   width: 80px;
 }
 
 .user--info--textWrapper {
-  margin-left: 8px;
+  @include flexbox;
+  flex-direction: column;
+  margin-left: 16px;
+  gap: 8px 0;
+}
+
+.user--info--clanname {
+  @include flexbox;
 }
 
 .user--info--nickname {
-  @include flexbox();
+  @include flexbox;
   font-size: 24px;
   font-weight: 600;
-  margin-bottom: 8px;
 }
 
 .user--info--refresh {
@@ -42,17 +47,17 @@
 }
 
 .user--info--wTitle {
-  @include flexbox();
+  @include flexbox;
   font-size: 20px;
 }
 
 .user--info--wBtnWrapper {
-  @include flexbox();
+  @include flexbox;
   margin-top: 8px;
 }
 
 .user--info--wBtn {
-  @include btn();
+  @include btn;
   box-sizing: border-box;
   border: 0.5px solid grey;
   border-radius: 4px;
@@ -69,7 +74,7 @@
 }
 
 .user--widget--container {
-  @include flexbox();
+  @include flexbox;
   flex-direction: column;
   background-color: whitesmoke;
   border: 1px solid black;
@@ -86,7 +91,7 @@
 }
 
 .user--widget--btn {
-  @include flexbox();
+  @include flexbox;
   cursor: pointer;
   margin-bottom: 64px;
   width: 50px;
