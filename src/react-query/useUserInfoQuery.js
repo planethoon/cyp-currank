@@ -3,7 +3,7 @@ import { useQuery, useQueryClient } from "react-query";
 
 export function useQueryUserInfo(nickname) {
   const userInfo = useQuery({
-    queryKey: ["userinfo"],
+    queryKey: ["userinfo", nickname],
     queryFn: () => {
       fetch(`/api/${nickname}`)
         .then((res) => res.json())

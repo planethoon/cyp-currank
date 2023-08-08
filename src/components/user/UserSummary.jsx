@@ -61,8 +61,16 @@ function UserSummary() {
     ],
   };
 
-  const { data } = useSummaryQuery(nickname);
+  const { data, isLoading } = useSummaryQuery(nickname);
   console.log(data);
+
+  if (isLoading) {
+    return (
+      <div className="user--summary">
+        <span>로딩중</span>
+      </div>
+    );
+  }
 
   return (
     <div className="user--summary">
