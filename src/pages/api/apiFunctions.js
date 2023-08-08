@@ -60,6 +60,7 @@ export async function getMatches(playerId, gametype) {
   const endpoint = "https://api.neople.co.kr/cy";
   let matches = [];
 
+  console.log("matches 호출");
   const convertUnixTimeToString = (time) => {
     const date = new Date(time);
     const year = date.getFullYear();
@@ -86,11 +87,11 @@ export async function getMatches(playerId, gametype) {
 
   const [startDate, endDate] = getQueryTimes();
 
-  let res = await fetch(
+  const res = await fetch(
     endpoint +
       `/players/${playerId}/matches?gameTypeId=${gametype}&startDate=${startDate}&endDate=${endDate}&limit=100&apikey=${key}`
   );
-  let json = await res.json();
+  const json = await res.json();
 
   matches = [...matches, ...json.matches.rows];
 

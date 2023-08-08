@@ -3,8 +3,12 @@ import UserSummaryRank from "./UserSummaryRank";
 import UserSummaryPosition from "./UserSummaryPosition";
 import UserSummaryCharacter from "./UserSummaryCharacter";
 import UserSummaryWinrate from "./UserSummaryWinrate";
+import useSummaryQuery from "../../react-query/useSummaryQuery";
+import { useRouter } from "next/router";
+import useNicknameRouter from "../../hooks/useNickname";
 
 function UserSummary() {
+  const { nickname } = useNicknameRouter();
   const userInfo = {
     playerId: "",
     nickname: "Solidity",
@@ -12,10 +16,20 @@ function UserSummary() {
     ratingPoint: 2400,
     maxRatingPoint: 2500,
     rank: 0,
-    wins: 40,
-    loses: 20,
-    disconnected: 4,
-    totalGames: 64,
+    records: [
+      {
+        gameTypeId: "rating",
+        winCount: 67,
+        loseCount: 47,
+        stopCount: 0,
+      },
+      {
+        gameTypeId: "normal",
+        winCount: 86,
+        loseCount: 60,
+        stopCount: 0,
+      },
+    ],
     recentCharacter: [
       {
         name: "케니스",
@@ -45,23 +59,28 @@ function UserSummary() {
         playCount: 9,
       },
     ],
-    recentPosition: {
-      tanker: 52,
-      melee: 26.2,
-      range: 21,
-      supporter: 0.8,
-    },
-    matchId: "8f44143270b145d58f26305b5692a2e4559414879e15355df9b4fe46919aa6f2",
   };
+
+  const { data } = useSummaryQuery(nickname);
+  console.log(data);
 
   return (
     <div className="user--summary">
       <div className="user--summary--rankWinrateWrapper">
-        <UserSummaryRank userInfo={userInfo} />
-        <UserSummaryWinrate userInfo={userInfo} />
+        <UserSummaryRank userInfo={data} />
+        <UserSummaryWinrate userInfo={data} />
       </div>
-      <UserSummaryCharacter userInfo={userInfo} />
-      <UserSummaryPosition userInfo={userInfo} />
+      <UserSummaryCharacter userInfo={data} />
+      <UserSummaryPosition
+        userInfo={{
+          recentPosition: {
+            tanker: 52,
+            melee: 26.2,
+            range: 21,
+            supporter: 0.8,
+          },
+        }}
+      />
     </div>
   );
 }
