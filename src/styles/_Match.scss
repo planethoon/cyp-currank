@@ -1,6 +1,7 @@
 .match--container {
   @include boxCheck(rgba(128, 128, 128, 0.6));
   @include flexbox;
+  box-sizing: border-box;
   width: 820px;
   height: 120px;
   border-radius: 6px;
@@ -13,6 +14,9 @@
   &.lose {
     border-left: 10px solid #ff7373;
     background-color: #ff737352;
+  }
+  &.on {
+    border-radius: 6px 6px 0 0;
   }
 }
 
@@ -235,6 +239,7 @@ readmore btn below
   height: 120px;
   width: 30px;
   right: 0px;
+  cursor: pointer;
   & > span {
     margin-bottom: 5px;
     // color:;

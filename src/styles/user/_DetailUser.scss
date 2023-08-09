@@ -1,0 +1,100 @@
+.detailUser--container {
+  // @include boxCheck(black);
+  @include flexbox;
+  width: 815px;
+  height: 50px;
+  justify-content: flex-start;
+  border-bottom: 1px solid #80808080;
+}
+
+.detailUser--position {
+  @include flexbox;
+  margin-left: 5px;
+}
+
+.detailUser--pic {
+  @include flexbox;
+  margin-left: 5px;
+}
+
+.detailUser--level {
+  margin-left: 10px;
+  // flex: 1 0 auto;
+}
+
+.detailUser--nickname {
+  margin-left: 10px;
+  // flex: 1 0 auto;
+  width: 125px;
+}
+
+.detailUser--result {
+  margin-left: 10px;
+  width: 200px;
+  font-size: 14px;
+}
+
+.detailUser--resultWrapper {
+  @include flexbox;
+  & > span:first-child {
+    width: 60px;
+  }
+  & > span:nth-child(2) {
+    text-align: end;
+    width: 20px;
+  }
+  & > span:nth-child(3) {
+    margin-left: 20px;
+    width: 60px;
+  }
+  & > span:last-child {
+    text-align: end;
+    width: 20px;
+  }
+}
+
+.detailUser--items {
+  @include flexbox;
+  flex: 4 0 auto;
+}
+
+.detailUser--itemWrapper {
+  @include flexbox;
+  position: relative;
+  & > .detailUser--itemSummary {
+    bottom: -25px;
+    position: absolute;
+    display: none;
+    height: 20px;
+    width: 110px;
+    font-size: 13px;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 5px;
+  }
+  &:hover > .detailUser--itemSummary {
+    @include flexbox;
+    z-index: 2;
+  }
+}
+
+.detailUser--toggleBtn {
+  @include flexbox;
+  flex-direction: column;
+  width: 20px;
+  height: 40px;
+  margin: 0 5px;
+  background-color: #80808080;
+  border-radius: 15px;
+  cursor: pointer;
+  & > .toggleBtn {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+
+    &.on {
+      background-color: white;
+    }
+  }
+}

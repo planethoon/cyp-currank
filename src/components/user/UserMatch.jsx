@@ -18,6 +18,7 @@ export default function UserMatch() {
       {data.matches.map((e) => {
         return <Match key={e.matchId} matchInfo={e} />;
       })}
+      {/* <Match matchInfo={data.matches[0]} /> */}
     </div>
   );
 }
