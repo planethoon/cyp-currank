@@ -3,6 +3,7 @@ import UserInfo from "../../components/user/UserInfo";
 import UserSummary from "../../components/user/UserSummary";
 import Widget from "../../components/Widget";
 import Footer from "../../components/Footer";
+import Header from "../../components/Header";
 
 // custom hooks
 import { useModal } from "../../hooks/useModal";
@@ -43,6 +44,7 @@ export default function UserPageSlug({ host }) {
 UserPageSlug.checkSubLayout = function checkSubLayout(page) {
   return (
     <div>
+      <Header />
       {page}
       <Footer />
     </div>

@@ -8,8 +8,6 @@ function UserSummaryPosition() {
 
   const { tanker, melee, range, supporter } = data;
 
-  console.log(data);
-
   if (isLoading) {
     return (
       <div className="user--summary--positionContainer">

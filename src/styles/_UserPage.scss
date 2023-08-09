@@ -1,12 +1,12 @@
 .user--background {
   @include flexbox();
   flex-direction: column;
-  background: rgb(144, 205, 251);
+  background: rgba(144, 205, 251, 0.7);
   background: linear-gradient(
     149deg,
-    rgba(144, 205, 251, 1) 0%,
-    rgba(183, 189, 240, 1) 70%,
-    rgba(223, 173, 229, 1) 100%
+    rgba(144, 205, 251, 0.7) 0%,
+    rgba(183, 189, 240, 0.7) 70%,
+    rgba(223, 173, 229, 0.7) 100%
   );
   height: auto;
   position: relative;

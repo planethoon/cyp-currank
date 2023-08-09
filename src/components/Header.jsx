@@ -1,7 +1,16 @@
+import Logo from "./Logo";
+import SearchBar from "./SearchBar";
+
 export default function Header() {
   return (
     <div className="header--title">
-      <span>사이퍼즈 스트리머 랭크 위젯</span>
+      <div className="header--logo">
+        <Logo />
+      </div>
+      <div className="header--searchbar">
+        <SearchBar />
+      </div>
+      <div className="header--menu"></div>
     </div>
   );
 }
