@@ -27,11 +27,14 @@ export default function UserPageSlug({ host }) {
         <UserSummary />
         <UserMatch />
       </div>
-      <div
+      {/* <div
         className={
-          isOpen ? "user--widget--container on" : "user--widget--container"
+          isOpen
+            ? "user--widget--container modalOpen"
+            : "user--widget--container"
         }
-      >
+      > */}
+      <div className={`user--widget--container${isOpen && ` modalOpen`}`}>
         <div className="user--widget--btn" onClick={closeModal}>
           닫기
         </div>

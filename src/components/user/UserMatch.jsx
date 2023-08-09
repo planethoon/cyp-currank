@@ -1,6 +1,5 @@
 import React from "react";
 import Match from "./match/Match";
-import { useQuery } from "react-query";
 import useRatingMatchesQuery from "../../react-query/useMatchesQuery";
 import { useRouter } from "next/router";
 
@@ -18,7 +17,6 @@ export default function UserMatch() {
       {data.matches.map((e) => {
         return <Match key={e.matchId} matchInfo={e} />;
       })}
-      {/* <Match matchInfo={data.matches[0]} /> */}
     </div>
   );
 }
