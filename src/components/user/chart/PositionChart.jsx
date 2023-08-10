@@ -1,6 +1,5 @@
-import { useState } from "react";
 import Image from "next/image";
-import ImagesDir from "../../../images";
+import { imageSelecter } from "../../../images";
 
 export default function PositionChart({ value, classType }) {
   return (
@@ -14,7 +13,7 @@ export default function PositionChart({ value, classType }) {
       </div>
       <div className="chart--positionIcon">
         <Image
-          src={ImagesDir[classType]}
+          src={imageSelecter(classType)}
           width="30px"
           height="30px"
           alt="position"

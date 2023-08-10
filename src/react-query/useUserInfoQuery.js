@@ -1,7 +1,7 @@
 import { useQuery } from "react-query";
 
-export function useUserInfoQuery(nickname) {
-  return useQuery({
+export function useUserInfoQuery(nickname, interval) {
+  const config = {
     queryKey: ["userinfo", nickname],
     queryFn: async () => {
       const res = await fetch(`/api/${nickname}`);
@@ -9,7 +9,6 @@ export function useUserInfoQuery(nickname) {
 
       return json;
     },
-    // refetchInterval: 60000,
     placeholderData: {
       characterId: "",
       playerId: "",
@@ -18,5 +17,9 @@ export function useUserInfoQuery(nickname) {
       ratingPoint: 0,
       rank: 0,
     },
-  });
+  };
+  if (interval) {
+    config.refetchInterval = interval;
+  }
+  return useQuery(config);
 }

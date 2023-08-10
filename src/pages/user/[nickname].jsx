@@ -1,3 +1,6 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
+
 // components
 import UserInfo from "../../components/user/UserInfo";
 import UserSummary from "../../components/user/UserSummary";
@@ -9,8 +12,6 @@ import Header from "../../components/Header";
 import { useModal } from "../../hooks/useModal";
 import UserMatch from "../../components/user/UserMatch";
 import useNicknameRouter from "../../hooks/useNickname";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
 export async function getServerSideProps(context) {
   const host = context.req.headers.host;

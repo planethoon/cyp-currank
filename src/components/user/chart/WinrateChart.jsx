@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useRef } from "react";
 import Chart from "chart.js/auto";
 
 function WinrateChart({ wins = 0, loses = 0, disconnected = 0 }) {

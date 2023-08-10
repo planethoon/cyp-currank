@@ -31,7 +31,11 @@ export default async function handler(req, res) {
 
   try {
     userData = { ...userData, ...(await getRanking(userData.playerId)) };
-
+    if (userData.rank && userData.rank <= 30) {
+      userData.tierName = "LEGEND";
+    } else if (userData.rank && userData.rank <= 130) {
+      userData.tierName = "HERO";
+    }
     await res.status(200).json(userData);
   } catch (err) {
     console.error("getRanking 에러", err);

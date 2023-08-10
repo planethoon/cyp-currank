@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React, { useState } from "react";
-import ImagesDir from "../../../images";
+import { imageSelecter } from "../../../images";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretDown, faCaretUp } from "@fortawesome/free-solid-svg-icons";
@@ -40,18 +40,6 @@ export default function Match({ matchInfo }) {
     });
   }
 
-  const setPositionImage = (position) => {
-    if (position === "탱커") {
-      return ImagesDir["tanker"];
-    } else if (position === "근거리딜러") {
-      return ImagesDir["melee"];
-    } else if (position === "원거리딜러") {
-      return ImagesDir["range"];
-    } else {
-      return ImagesDir["supporter"];
-    }
-  };
-
   return (
     <div>
       <div
@@ -88,7 +76,7 @@ export default function Match({ matchInfo }) {
             </div>
             <div className="match--character--position">
               <Image
-                src={setPositionImage(matchInfo.position.name)}
+                src={imageSelecter(matchInfo.position.name)}
                 width="30"
                 height="30"
                 alt="position"
@@ -217,22 +205,11 @@ export default function Match({ matchInfo }) {
 }
 
 export const ListPlayer = ({ nickname, position, character }) => {
-  const renamePositionKoreanToEnglish = (position) => {
-    if (position === "탱커") {
-      return "tanker";
-    } else if (position === "근거리딜러") {
-      return "melee";
-    } else if (position === "원거리딜러") {
-      return "range";
-    } else {
-      return "supporter";
-    }
-  };
   return (
     <div className="listPlayer--wrapper">
       <div className="listPlayer--position">
         <Image
-          src={ImagesDir[renamePositionKoreanToEnglish(position)]}
+          src={imageSelecter(position)}
           alt="position"
           width="18"
           height="18"
@@ -286,22 +263,11 @@ export const MatchDetail = ({ winPlayer, losePlayer }) => {
 
 export const DetailUser = ({ data }) => {
   const [toggle, setToggle] = useState(true);
-  const renamePositionKoreanToEnglish = (position) => {
-    if (position === "탱커") {
-      return "tanker";
-    } else if (position === "근거리딜러") {
-      return "melee";
-    } else if (position === "원거리딜러") {
-      return "range";
-    } else {
-      return "supporter";
-    }
-  };
   return (
     <div className={`detailUser--container`}>
       <div className="detailUser--position">
         <Image
-          src={ImagesDir[renamePositionKoreanToEnglish(data.position.name)]}
+          src={imageSelecter(data.position.name)}
           alt="position"
           width="30"
           height="30"

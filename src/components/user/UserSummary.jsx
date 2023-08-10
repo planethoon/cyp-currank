@@ -1,10 +1,8 @@
-import React, { useState } from "react";
 import UserSummaryRank from "./UserSummaryRank";
 import UserSummaryPosition from "./UserSummaryPosition";
 import UserSummaryCharacter from "./UserSummaryCharacter";
 import UserSummaryWinrate from "./UserSummaryWinrate";
 import useSummaryQuery from "../../react-query/useSummaryQuery";
-import { useRouter } from "next/router";
 import useNicknameRouter from "../../hooks/useNickname";
 
 function UserSummary() {

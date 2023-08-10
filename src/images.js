@@ -10,18 +10,33 @@ import melee from "../public/images/melee.png";
 import range from "../public/images/range.png";
 import supporter from "../public/images/supporter.png";
 
-const imgs = {
-  bronze,
-  silver,
-  gold,
-  joker,
-  ace,
-  hero,
-  legend,
-  tanker,
-  melee,
-  range,
-  supporter,
+export const imageSelecter = (key) => {
+  switch (key) {
+    case "tanker":
+    case "탱커":
+      return tanker;
+    case "melee":
+    case "근거리딜러":
+      return melee;
+    case "range":
+    case "원거리딜러":
+      return range;
+    case "supporter":
+    case "서포터":
+      return supporter;
+    case "bronze":
+      return bronze;
+    case "silver":
+      return silver;
+    case "gold":
+      return gold;
+    case "joker":
+      return joker;
+    case "ace":
+      return ace;
+    case "hero":
+      return hero;
+    case "legend":
+      return legend;
+  }
 };
-
-export default imgs;
