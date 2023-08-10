@@ -316,7 +316,11 @@ export const DetailUser = ({ data }) => {
         />
       </div>
       <div className="detailUser--level">Lv.{data.playInfo.level}</div>
-      <div className="detailUser--nickname">{data.nickname}</div>
+      <div className="detailUser--nickname">
+        <Link href={`/user/${data.nickname}`}>
+          <span>{data.nickname}</span>
+        </Link>
+      </div>
       <div className="detailUser--result">
         <div className="detailUser--resultWrapper">
           <span>{`가해량: `}</span>

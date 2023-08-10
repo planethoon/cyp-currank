@@ -23,9 +23,17 @@
 }
 
 .detailUser--nickname {
+  @include flexbox;
   margin-left: 10px;
   // flex: 1 0 auto;
   width: 125px;
+  cursor: pointer;
+  transition: 0.1s;
+  &:hover {
+    transition: 0.2s;
+    font-weight: 900;
+    font-size: 17px;
+  }
 }
 
 .detailUser--result {
