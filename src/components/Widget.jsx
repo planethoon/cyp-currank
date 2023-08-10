@@ -3,7 +3,10 @@ import { useParams } from "react-router-dom";
 import ImagesDir from "../images";
 import Image from "next/image";
 import { useQuery, useQueryClient } from "react-query";
-import { useQueryUserInfo } from "../react-query/useUserInfoQuery";
+import {
+  useQueryUserInfo,
+  useUserInfoQuery,
+} from "../react-query/useUserInfoQuery";
 
 const Widget = ({ nickname = solidity, data }) => {
   const [userInfo, setUserInfo] = useState({
@@ -15,13 +18,6 @@ const Widget = ({ nickname = solidity, data }) => {
   });
 
   const [img, setImg] = useState();
-
-  // if (userInfo.status === "success") {
-  //   console.log(userInfo.data);
-  //   if (userInfo.tierName) {
-  //     setImg(userInfo.tierName.split(" ")[0].toLowerCase());
-  //   }
-  // }
 
   const getUser = (name) => {
     fetch(`/api/${name}`)

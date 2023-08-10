@@ -9,6 +9,8 @@ import Header from "../../components/Header";
 import { useModal } from "../../hooks/useModal";
 import UserMatch from "../../components/user/UserMatch";
 import useNicknameRouter from "../../hooks/useNickname";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
 export async function getServerSideProps(context) {
   const host = context.req.headers.host;
@@ -27,19 +29,17 @@ export default function UserPageSlug({ host }) {
         <UserSummary />
         <UserMatch />
       </div>
-      {/* <div
-        className={
-          isOpen
-            ? "user--widget--container modalOpen"
-            : "user--widget--container"
-        }
-      > */}
-      <div className={`user--widget--container${isOpen && ` modalOpen`}`}>
-        <div className="user--widget--btn" onClick={closeModal}>
-          닫기
+      {isOpen && (
+        <div className={`user--widget--background`}>
+          <div className={`user--widget--container`}>
+            <div className="user--widget--btn" onClick={closeModal}>
+              <FontAwesomeIcon icon={faTimes} />
+            </div>
+            <span>미리보기</span>
+            <Widget nickname={nickname} />
+          </div>
         </div>
-        <Widget nickname={nickname} />
-      </div>
+      )}
     </div>
   );
 }

@@ -73,28 +73,55 @@
   }
 }
 
+.user--widget--background {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: #000000b1;
+  z-index: 3;
+}
+
 .user--widget--container {
-  @include flexbox;
   flex-direction: column;
   background-color: whitesmoke;
   border: 1px solid black;
-  width: 500px;
-  height: 500px;
-  position: absolute;
+  width: 400px;
+  height: 200px;
   border-radius: 5px;
-  display: none;
+  position: absolute;
+  top: 300px;
+  left: 50%;
   z-index: 10;
-
-  &.modalOpen {
-    display: flex;
+  transform: translate(-50%, -50%);
+  & > .widget--wrapper {
+    position: absolute;
+    left: 50%;
+    bottom: -70px;
+    transform: translate(-50%, -50%);
+  }
+  & > span {
+    position: absolute;
+    left: 55px;
+    top: 20px;
+    font-family: "SeoulHangangM";
+    font-size: 20px;
   }
 }
 
 .user--widget--btn {
   @include flexbox;
+  position: absolute;
+  top: 5px;
+  right: 10px;
   cursor: pointer;
-  margin-bottom: 64px;
-  width: 50px;
-  height: 50px;
-  border: 1px solid black;
+  // margin-bottom: 64px;
+  font-size: 24px;
+  width: 30px;
+  height: 30px;
+  transition: 0.1s;
+
+  &:hover {
+    font-size: 28px;
+    transition: 0.2s;
+  }
 }
