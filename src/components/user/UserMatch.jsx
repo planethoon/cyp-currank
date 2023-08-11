@@ -28,14 +28,6 @@ export default function UserMatch() {
   // const { data, isLoading } = useMatchesQuery(nickname);
   const { data, fetchNextPage } = useMatchesInfiniteQuery(nickname, "rating");
 
-  // useEffect(() => {
-  //   const interval = setInterval(() => {
-  //     console.log("타임아웃 작동");
-  //     fetchNextPage();
-  //   }, 10000);
-  //   return interval;
-  // }, []);
-
   // if (isLoading) {
   //   return <div>로딩중</div>;
   // }
