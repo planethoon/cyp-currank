@@ -3,6 +3,7 @@ import Match from "./match/Match";
 import useMatchesQuery from "../../react-query/useMatchesQuery";
 import { useRouter } from "next/router";
 import useMatchesInfiniteQuery from "../../react-query/useMatchesInfiniteQuery";
+import { useInView } from "react-intersection-observer";
 
 // export default function UserMatch() {
 //   const router = useRouter();
@@ -23,27 +24,44 @@ import useMatchesInfiniteQuery from "../../react-query/useMatchesInfiniteQuery";
 // }
 
 export default function UserMatch() {
+  const [targetRef, inView] = useInView({ rootMargin: "300px" });
   const router = useRouter();
   const { nickname } = router.query;
-  // const { data, isLoading } = useMatchesQuery(nickname);
-  const { data, fetchNextPage } = useMatchesInfiniteQuery(nickname, "rating");
 
-  // if (isLoading) {
-  //   return <div>로딩중</div>;
-  // }
-  const targetRef = useRef(null);
-  const observer = new IntersectionObserver(callback, {
-    root: targetRef,
-    rootMargin: "300px",
-  });
-  observer.observe(targetRef);
+  const { data, fetchNextPage, isLoading } = useMatchesInfiniteQuery(
+    nickname,
+    "rating"
+  );
+
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     fetchNextPage();
+  //   }, 5000);
+  //   return () => {
+  //     interval();
+  //   };
+  // }, []);
+
+  useEffect(() => {
+    if (inView) {
+      fetchNextPage();
+    }
+  }, [inView, fetchNextPage]);
+
+  if (isLoading) {
+    return <div>로딩중</div>;
+  }
 
   return (
     <div className="user--match--container">
-      {/* {data.matches.map((e) => {
-        return <Match key={e.matchId} matchInfo={e} />;
-      })} */}
-      <div className="user--match--loadingIndicator" />
+      {data.pages
+        .reduce((acc, cur) => {
+          return [...acc, ...cur.matches];
+        }, [])
+        .map((e) => (
+          <Match key={e.matchId} matchInfo={e} />
+        ))}
+      <div className="user--match--loadingIndicator" ref={targetRef} />
     </div>
   );
 }
