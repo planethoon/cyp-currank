@@ -28,25 +28,14 @@ export default function UserMatch() {
   const router = useRouter();
   const { nickname } = router.query;
 
-  const { data, fetchNextPage, isLoading } = useMatchesInfiniteQuery(
-    nickname,
-    "rating"
-  );
-
-  // useEffect(() => {
-  //   const interval = setInterval(() => {
-  //     fetchNextPage();
-  //   }, 5000);
-  //   return () => {
-  //     interval();
-  //   };
-  // }, []);
+  const { data, fetchNextPage, isLoading, hasNextPage } =
+    useMatchesInfiniteQuery(nickname, "rating");
 
   useEffect(() => {
-    if (inView) {
+    if (hasNextPage && inView) {
       fetchNextPage();
     }
-  }, [inView, fetchNextPage]);
+  }, [inView, hasNextPage]);
 
   if (isLoading) {
     return <div>로딩중</div>;

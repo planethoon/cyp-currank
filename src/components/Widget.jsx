@@ -3,7 +3,7 @@ import { imageSelecter } from "../images";
 import Image from "next/image";
 import { useUserInfoQuery } from "../react-query/useUserInfoQuery";
 
-const Widget = ({ nickname = "solidity" }) => {
+const Widget = ({ nickname = "nextjs" }) => {
   const { data: userInfo } = useUserInfoQuery(nickname, 600000);
 
   const adjustNicknameSize = (nickname) => {
