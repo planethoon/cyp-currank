@@ -11,8 +11,6 @@ async function handler(req, res) {
 
   userInfo = { ...(await getPlayerId(nickname)) };
 
-  console.log(req.query);
-
   try {
     if (!next) {
       const { nextkey, matches } = await getMatchesInitial(

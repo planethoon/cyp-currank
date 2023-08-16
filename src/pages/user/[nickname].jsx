@@ -12,6 +12,8 @@ import Header from "../../components/Header";
 import { useModal } from "../../hooks/useModal";
 import UserMatch from "../../components/user/UserMatch";
 import useNicknameRouter from "../../hooks/useNickname";
+import UserGameType from "../../components/user/UserGameType";
+import useGameTypeHandle from "../../hooks/useGameTypeHandle";
 
 export async function getServerSideProps(context) {
   const host = context.req.headers.host;
@@ -20,15 +22,20 @@ export async function getServerSideProps(context) {
 
 export default function UserPageSlug({ host }) {
   const { nickname } = useNicknameRouter();
-
+  const [gameType, changeToRating, changeToNormal] = useGameTypeHandle();
   const [isOpen, switchModal, closeModal] = useModal();
 
   return (
     <div className="user--background">
       <div className="user--container">
         <UserInfo nickname={nickname} host={host} switchModal={switchModal} />
-        <UserSummary />
-        <UserMatch />
+        <UserSummary gameType={gameType} />
+        <UserGameType
+          gameType={gameType}
+          changeToRating={changeToRating}
+          changeToNormal={changeToNormal}
+        />
+        <UserMatch gameType={gameType} />
       </div>
       {isOpen && (
         <div className={`user--widget--background`}>

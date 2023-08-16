@@ -68,7 +68,6 @@ character below
 
 */
 .match--character {
-  // @include boxCheck(red);
   width: 60px;
   height: 60px;
   margin-left: 15px;
@@ -89,14 +88,12 @@ character below
   overflow: hidden;
 }
 .match--character--position {
-  // @include boxCheck(blue);
   position: absolute;
   z-index: 2;
   top: -10px;
   left: -10px;
 }
 .match--character--level {
-  // @include boxCheck(red);
   @include flexbox;
   position: absolute;
   z-index: 2;
@@ -117,7 +114,6 @@ result below
 */
 
 .match--result {
-  // @include boxCheck(red);
   @include flexbox;
   flex-direction: column;
   margin-left: 20px;
@@ -125,13 +121,11 @@ result below
 }
 
 .match--kda {
-  // @include boxCheck(black);
   @include flexbox;
   flex-direction: column;
 }
 
 .match--kda--text {
-  // font-size: 20px;
   font-weight: 700;
   &:first-child {
     font-size: 20px;
@@ -173,7 +167,6 @@ playerlist below
 */
 .match--playerlist {
   @include flexbox;
-  // gap: 0 8px;
   margin-left: 15px;
 }
 
@@ -194,7 +187,6 @@ ListPlayer inner Component
 
 */
 .listPlayer--wrapper {
-  // @include boxCheck(black);
   @include flexbox;
   justify-content: flex-start;
   gap: 0 2px;
@@ -203,7 +195,6 @@ ListPlayer inner Component
 
 .listPlayer--position {
   @include flexbox;
-  // box-sizing: border-box;
   width: 20px;
   height: 20px;
 }
@@ -233,7 +224,6 @@ readmore btn below
 */
 
 .match--moreInfoBtn {
-  // @include boxCheck(blue);
   @include flexbox;
   flex-direction: column;
   justify-content: flex-end;
@@ -246,7 +236,6 @@ readmore btn below
   cursor: pointer;
   & > span {
     margin-bottom: 5px;
-    // color:;
   }
 
   &.lose {

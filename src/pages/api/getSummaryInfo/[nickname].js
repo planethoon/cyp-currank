@@ -6,13 +6,13 @@ import {
 } from "../apiFunctions";
 
 async function handler(req, res) {
-  const { nickname } = req.query;
+  const { nickname, gameType } = req.query;
 
   try {
     let userData = { ...(await getPlayerId(nickname)) };
     userData = { ...userData, ...(await getUserDetail(userData.playerId)) };
     userData = { ...userData, ...(await getRanking(userData.playerId)) };
-    const matches = [...(await getMatches(userData.playerId, "rating"))];
+    const matches = [...(await getMatches(userData.playerId, gameType))];
 
     const reduced = await matches.reduce((acc, cur) => {
       const {
