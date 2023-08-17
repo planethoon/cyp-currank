@@ -1,6 +1,4 @@
-import React, { useState, useEffect } from "react";
 import { imageSelecter } from "../images";
-import Image from "next/image";
 import { useUserInfoQuery } from "../react-query/useUserInfoQuery";
 
 const Widget = ({ nickname = "nextjs" }) => {
@@ -26,7 +24,7 @@ const Widget = ({ nickname = "nextjs" }) => {
   return (
     <div className="widget--wrapper">
       <div className="widget--img--wrapper">
-        <Image
+        <img
           src={imageSelecter(
             userInfo.tierName
               ? userInfo.tierName.split(" ")[0].toLowerCase()

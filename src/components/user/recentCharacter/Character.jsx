@@ -1,5 +1,4 @@
 import React from "react";
-import Image from "next/image";
 
 function Character({ data }) {
   const {
@@ -14,7 +13,7 @@ function Character({ data }) {
   return (
     <div className="recentCharacter--container">
       <div className="recentCharacter--pic">
-        <Image
+        <img
           src={`https://img-api.neople.co.kr/cy/characters/${characterId}`}
           width="45"
           height="45"

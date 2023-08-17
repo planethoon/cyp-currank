@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { imageSelecter } from "../../../images";
 
 export default function PositionChart({ value, classType }) {
@@ -12,7 +11,7 @@ export default function PositionChart({ value, classType }) {
         />
       </div>
       <div className="chart--positionIcon">
-        <Image
+        <img
           src={imageSelecter(classType)}
           width="30px"
           height="30px"

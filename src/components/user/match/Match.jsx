@@ -1,4 +1,3 @@
-import Image from "next/image";
 import React, { useState } from "react";
 import { imageSelecter } from "../../../images";
 import Link from "next/link";
@@ -67,7 +66,7 @@ export default function Match({ matchInfo }) {
         <div className="match--character">
           <div className="match--character--wrapper">
             <div className="match--character--img">
-              <Image
+              <img
                 src={`https://img-api.neople.co.kr/cy/characters/${matchInfo.playInfo.characterId}`}
                 width="60"
                 height="60"
@@ -75,7 +74,7 @@ export default function Match({ matchInfo }) {
               />
             </div>
             <div className="match--character--position">
-              <Image
+              <img
                 src={imageSelecter(matchInfo.position.name)}
                 width="30"
                 height="30"
@@ -103,7 +102,7 @@ export default function Match({ matchInfo }) {
           </div>
           <div className="match--attribute">
             <div className="match--attribute--img">
-              <Image
+              <img
                 src={`https://img-api.neople.co.kr/cy/position-attributes/${matchInfo.position.attribute[0].id}
               `}
                 width="35"
@@ -112,7 +111,7 @@ export default function Match({ matchInfo }) {
               />
             </div>
             <div className="match--attribute--img">
-              <Image
+              <img
                 src={`https://img-api.neople.co.kr/cy/position-attributes/${matchInfo.position.attribute[1].id}
               `}
                 width="35"
@@ -121,7 +120,7 @@ export default function Match({ matchInfo }) {
               />
             </div>
             <div className="match--attribute--img">
-              <Image
+              <img
                 src={`https://img-api.neople.co.kr/cy/position-attributes/${matchInfo.position.attribute[2].id}
               `}
                 width="35"
@@ -208,7 +207,7 @@ export const ListPlayer = ({ nickname, position, character }) => {
   return (
     <div className="listPlayer--wrapper">
       <div className="listPlayer--position">
-        <Image
+        <img
           src={imageSelecter(position)}
           alt="position"
           width="18"
@@ -216,7 +215,7 @@ export const ListPlayer = ({ nickname, position, character }) => {
         />
       </div>
       <div className="listPlayer--character">
-        <Image
+        <img
           src={`https://img-api.neople.co.kr/cy/characters/${character}`}
           alt="character"
           width="20"
@@ -266,7 +265,7 @@ export const DetailUser = ({ data }) => {
   return (
     <div className={`detailUser--container`}>
       <div className="detailUser--position">
-        <Image
+        <img
           src={imageSelecter(data.position.name)}
           alt="position"
           width="30"
@@ -274,7 +273,7 @@ export const DetailUser = ({ data }) => {
         />
       </div>
       <div className="detailUser--pic">
-        <Image
+        <img
           src={`https://img-api.neople.co.kr/cy/characters/${data.playInfo.characterId}`}
           alt="character"
           width="40"
@@ -306,7 +305,7 @@ export const DetailUser = ({ data }) => {
           if (toggle ? idx < 8 : idx >= 8) {
             return (
               <div key={e.itemId} className="detailUser--itemWrapper">
-                <Image
+                <img
                   src={`https://img-api.neople.co.kr/cy/items/${e.itemId}`}
                   alt={e.itemName}
                   width="40"
