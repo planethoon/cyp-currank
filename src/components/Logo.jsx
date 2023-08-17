@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import React from "react";
 
-function Logo() {
+function Logo({ width, height }) {
   const router = useRouter();
   return (
     <div
@@ -10,10 +10,12 @@ function Logo() {
         router.push("/");
       }}
     >
-      <span>C</span>
-      <span>YP</span>
-      <span>.</span>
-      <span>GG</span>
+      <img
+        src="https://i.ibb.co/2M3tNX8/logo4.png"
+        alt="CYP.GG"
+        width={width}
+        height={height}
+      />
     </div>
   );
 }
