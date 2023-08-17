@@ -29,7 +29,7 @@ function UserSummary({ gameType }) {
         <UserSummaryWinrate userInfo={data} gameType={gameType} />
       </div>
       <UserSummaryCharacter userInfo={data} />
-      <UserSummaryPosition />
+      <UserSummaryPosition gameType={gameType} />
     </div>
   );
 }

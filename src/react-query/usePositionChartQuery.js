@@ -1,10 +1,12 @@
 import { useQuery } from "react-query";
 
-function usePositionChartQuery(nickname) {
+function usePositionChartQuery(nickname, gameType) {
   return useQuery({
     queryKey: ["positionchart", nickname],
     queryFn: async () => {
-      const res = await fetch(`/api/getRecentPosition/${nickname}`);
+      const res = await fetch(
+        `/api/getRecentPosition/${nickname}?gameType=${gameType}`
+      );
       const json = await res.json();
       return json;
     },

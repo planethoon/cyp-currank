@@ -2,11 +2,11 @@ import React from "react";
 import { getPlayerId, getMatches } from "../apiFunctions";
 
 async function handler(req, res) {
-  const { nickname } = req.query;
+  const { nickname, gameType } = req.query;
 
   try {
     const userInfo = { ...(await getPlayerId(nickname)) };
-    const matches = [...(await getMatches(userInfo.playerId, "rating"))];
+    const matches = [...(await getMatches(userInfo.playerId, gameType))];
 
     const result = await matches.reduce(
       (acc, cur) => {

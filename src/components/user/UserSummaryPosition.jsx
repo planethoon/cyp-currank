@@ -1,12 +1,19 @@
+import { useEffect } from "react";
 import useNicknameRouter from "../../hooks/useNickname";
 import usePositionChartQuery from "../../react-query/usePositionChartQuery";
 import PositionChart from "./chart/PositionChart";
 
-function UserSummaryPosition() {
+function UserSummaryPosition({ gameType }) {
   const { nickname } = useNicknameRouter();
-  const { data, isLoading } = usePositionChartQuery(nickname);
-
+  const { data, isLoading, refetch } = usePositionChartQuery(
+    nickname,
+    gameType
+  );
   const { tanker, melee, range, supporter } = data;
+
+  useEffect(() => {
+    refetch();
+  }, [gameType]);
 
   if (isLoading) {
     return (
