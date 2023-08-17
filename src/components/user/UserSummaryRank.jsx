@@ -1,12 +1,10 @@
-import { useState, useEffect } from "react";
-import Image from "next/image";
 import { imageSelecter } from "../../images";
 
 function UserSummaryRank({ userInfo }) {
   return (
     <div className="user--summary--rankContainer">
       <div className="user--summary--rankImg">
-        <Image
+        <img
           src={imageSelecter(
             userInfo.tierName
               ? userInfo.tierName.split(" ")[0].toLowerCase()

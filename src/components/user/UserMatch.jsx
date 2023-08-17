@@ -1,6 +1,5 @@
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import Match from "./match/Match";
-import useMatchesQuery from "../../react-query/useMatchesQuery";
 import { useRouter } from "next/router";
 import useMatchesInfiniteQuery from "../../react-query/useMatchesInfiniteQuery";
 import { useInView } from "react-intersection-observer";

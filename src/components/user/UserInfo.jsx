@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { useState } from "react";
 import { useUserInfoQuery } from "../../react-query/useUserInfoQuery";
 
@@ -10,7 +9,7 @@ export default function UserInfo({ host, nickname, switchModal }) {
     <div className="user--info">
       <div className="user--info--container">
         <div className="user--info--character">
-          <Image
+          <img
             src={`https://img-api.neople.co.kr/cy/characters/${data.characterId}`}
             alt={"character"}
             height="80"
