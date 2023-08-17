@@ -27,7 +27,11 @@ const Widget = ({ nickname = "nextjs" }) => {
     <div className="widget--wrapper">
       <div className="widget--img--wrapper">
         <Image
-          src={imageSelecter(userInfo.tierName.split(" ")[0].toLowerCase())}
+          src={imageSelecter(
+            userInfo.tierName
+              ? userInfo.tierName.split(" ")[0].toLowerCase()
+              : "unranked"
+          )}
           alt="rankimg"
         />
       </div>

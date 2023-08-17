@@ -9,6 +9,7 @@ import tanker from "../public/images/tanker.png";
 import melee from "../public/images/melee.png";
 import range from "../public/images/range.png";
 import supporter from "../public/images/supporter.png";
+import unranked from "../public/images/unranked.png";
 
 export const imageSelecter = (key) => {
   switch (key) {
@@ -24,6 +25,8 @@ export const imageSelecter = (key) => {
     case "supporter":
     case "서포터":
       return supporter;
+    case "unranked":
+      return unranked;
     case "bronze":
       return bronze;
     case "silver":

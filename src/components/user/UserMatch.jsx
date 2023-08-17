@@ -25,7 +25,11 @@ export default function UserMatch({ gameType }) {
   }, [gameType]);
 
   if (isLoading) {
-    return <div>로딩중</div>;
+    return <div className="user--match--alert">로딩중</div>;
+  }
+
+  if (!isLoading && !data.pages[0].matches.length) {
+    return <div className="user--match--alert">매치 기록이 없습니다.</div>;
   }
 
   return (

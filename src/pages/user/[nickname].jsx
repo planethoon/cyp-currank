@@ -30,13 +30,7 @@ export default function UserPageSlug({ host }) {
   const { data, isLoading } = useCheckUserQuery(nickname);
 
   if (!isLoading && !data.playerFound) {
-    return (
-      <div className="notfound--background">
-        <div className="notfound--container">
-          <NotFound />
-        </div>
-      </div>
-    );
+    return <NotFound />;
   }
 
   return (

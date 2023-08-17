@@ -1,18 +1,21 @@
 import WinrateChart from "./chart/WinrateChart";
 
 function UserSummaryWinrate({ userInfo, gameType }) {
-  const wins =
-    gameType === "rating"
-      ? userInfo.records[0].winCount
-      : userInfo.records[1].winCount;
-  const loses =
-    gameType === "rating"
-      ? userInfo.records[0].loseCount
-      : userInfo.records[1].loseCount;
-  const stops =
-    gameType === "rating"
-      ? userInfo.records[0].stopCount
-      : userInfo.records[1].stopCount;
+  const wins = !userInfo.records.length
+    ? 0
+    : gameType === "rating"
+    ? userInfo.records[0].winCount
+    : userInfo.records[1].winCount;
+  const loses = !userInfo.records.length
+    ? 0
+    : gameType === "rating"
+    ? userInfo.records[0].loseCount
+    : userInfo.records[1].loseCount;
+  const stops = !userInfo.records.length
+    ? 0
+    : gameType === "rating"
+    ? userInfo.records[0].stopCount
+    : userInfo.records[1].stopCount;
 
   return (
     <div className="user--summary--winrateContainer">

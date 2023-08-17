@@ -71,6 +71,12 @@ async function handler(req, res) {
       return b.playCount - a.playCount;
     });
 
+    if (userData.rank && userData.rank <= 30) {
+      userData.tierName = "LEGEND";
+    } else if (userData.rank && userData.rank <= 130) {
+      userData.tierName = "HERO";
+    }
+
     res.status(200).json({ ...userData, recentCharacter: sorted.slice(0, 3) });
   } catch (err) {
     console.log("err", err);
