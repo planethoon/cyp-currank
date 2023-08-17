@@ -11,7 +11,7 @@ export default function Document() {
         <meta content="쌉지지" property="og:title" />
         <meta content="//cyp.gg" property="og:url" />
         <meta content="사이퍼즈 전적 검색은 쌉지지" property="og:description" />
-        <meta content="//i.ibb.co/1KpFSjW/og-image-1.png" property="og:image" />
+        <meta content="//i.ibb.co/72x3WCQ/metadata.png" property="og:image" />
         <link rel="icon" href="/favicon.ico" />
         <script
           async

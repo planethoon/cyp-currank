@@ -5,7 +5,7 @@ export default function Header() {
   return (
     <div className="header--title">
       <div className="header--logo">
-        <Logo />
+        <Logo width="180px" height="55px" />
       </div>
       <div className="header--searchbar">
         <SearchBar />

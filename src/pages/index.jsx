@@ -8,7 +8,7 @@ export default function App() {
     <div className="App">
       <div className="main--background">
         <div className="main--title">
-          <Logo />
+          <Logo width="320px" height="100px" />
         </div>
         <div className="main--wrapper">
           <SearchBar />
