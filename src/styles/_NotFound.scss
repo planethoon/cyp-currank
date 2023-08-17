@@ -1,0 +1,30 @@
+.notfound--background {
+  @include flexbox();
+  flex-direction: column;
+  background: rgba(144, 205, 251, 0.7);
+  background: linear-gradient(
+    149deg,
+    rgba(144, 205, 251, 0.7) 0%,
+    rgba(183, 189, 240, 0.7) 70%,
+    rgba(223, 173, 229, 0.7) 100%
+  );
+  height: 95vh;
+  position: relative;
+  font-family: "Pretendard-Regular";
+}
+
+.notfound--container {
+  @include flexbox();
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 860px;
+  padding-bottom: 128px;
+  gap: 8px;
+}
+
+.notfound--textBox {
+  @include userContainer(400px);
+  flex-direction: column;
+  gap: 10px;
+  font-size: 18px;
+}

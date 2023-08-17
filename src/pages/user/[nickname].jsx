@@ -7,6 +7,7 @@ import UserSummary from "../../components/user/UserSummary";
 import Widget from "../../components/Widget";
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
+import NotFound from "../../components/NotFound";
 
 // custom hooks
 import { useModal } from "../../hooks/useModal";
@@ -14,6 +15,7 @@ import UserMatch from "../../components/user/UserMatch";
 import useNicknameRouter from "../../hooks/useNickname";
 import UserGameType from "../../components/user/UserGameType";
 import useGameTypeHandle from "../../hooks/useGameTypeHandle";
+import useCheckUserQuery from "../../react-query/useCheckUserQuery";
 
 export async function getServerSideProps(context) {
   const host = context.req.headers.host;
@@ -24,6 +26,18 @@ export default function UserPageSlug({ host }) {
   const { nickname } = useNicknameRouter();
   const [gameType, changeToRating, changeToNormal] = useGameTypeHandle();
   const [isOpen, switchModal, closeModal] = useModal();
+
+  const { data, isLoading } = useCheckUserQuery(nickname);
+
+  if (!isLoading && !data.playerFound) {
+    return (
+      <div className="notfound--background">
+        <div className="notfound--container">
+          <NotFound />
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="user--background">

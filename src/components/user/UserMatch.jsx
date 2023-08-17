@@ -5,30 +5,12 @@ import { useRouter } from "next/router";
 import useMatchesInfiniteQuery from "../../react-query/useMatchesInfiniteQuery";
 import { useInView } from "react-intersection-observer";
 
-// export default function UserMatch() {
-//   const router = useRouter();
-//   const { nickname } = router.query;
-//   const { data, isLoading } = useMatchesQuery(nickname);
-
-//   if (isLoading) {
-//     return <div>로딩중</div>;
-//   }
-
-//   return (
-//     <div className="user--match--container">
-//       {data.matches.map((e) => {
-//         return <Match key={e.matchId} matchInfo={e} />;
-//       })}
-//     </div>
-//   );
-// }
-
 export default function UserMatch({ gameType }) {
   const [targetRef, inView] = useInView({ rootMargin: "300px" });
   const router = useRouter();
   const { nickname } = router.query;
 
-  const { data, fetchNextPage, isLoading, hasNextPage, refetch } =
+  const { data, fetchNextPage, isLoading, hasNextPage, refetch, remove } =
     useMatchesInfiniteQuery(nickname, gameType);
 
   useEffect(() => {
@@ -38,6 +20,7 @@ export default function UserMatch({ gameType }) {
   }, [inView, hasNextPage]);
 
   useEffect(() => {
+    remove();
     refetch();
   }, [gameType]);
 

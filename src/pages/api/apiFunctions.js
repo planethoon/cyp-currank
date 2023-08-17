@@ -27,7 +27,6 @@ const getQueryTimes = () => {
 export async function getPlayerId(nickname) {
   const key = process.env.API_KEY;
   const endpoint = "https://api.neople.co.kr/cy";
-  // const { nickname } = req.query;
 
   let res = await fetch(
     endpoint + `/players?nickname=${nickname}&wordType=match&apikey=${key}`
