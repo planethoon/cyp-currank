@@ -3,6 +3,7 @@ import Chart from "chart.js/auto";
 
 function WinrateChart({ wins = 0, loses = 0, disconnected = 0 }) {
   const chartRef = useRef(null);
+  const chart = useRef(null);
   const chartConfig = {
     type: "doughnut",
     data: {
@@ -25,8 +26,16 @@ function WinrateChart({ wins = 0, loses = 0, disconnected = 0 }) {
 
   useEffect(() => {
     const context = chartRef.current.getContext("2d");
-    new Chart(context, chartConfig);
+    chart.current = new Chart(context, chartConfig);
   }, []);
+
+  useEffect(() => {
+    if (!!chart.current) {
+      chart.current.data.datasets.pop();
+      chart.current.data.datasets.push({ data: [wins, loses, disconnected] });
+      chart.current.update();
+    }
+  }, [wins]);
 
   return (
     <div>
