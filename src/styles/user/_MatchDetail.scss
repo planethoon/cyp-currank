@@ -1,0 +1,49 @@
+.matchDetail--container {
+  border: 1px solid #80808080;
+
+  border-radius: 0 0 5px 5px;
+  &.win {
+    background-color: #37a3eb2f;
+    transition: 0.2s;
+  }
+  &.lose {
+    background-color: #ff737352;
+    transition: 0.2s;
+  }
+}
+
+.matchDetail--toggleWrapper {
+  padding: 8px 0;
+
+  @include flexbox;
+  // gap: 0 20px;
+}
+
+.matchDetail--toggleBtn {
+  @include flexbox;
+  border: 2px solid #80808080;
+  width: 200px;
+  height: 40px;
+  cursor: pointer;
+
+  &:first-child {
+    border-right: none;
+    border-radius: 5px 0 0 5px;
+    background-color: #37a3eb2f;
+    transition: 0.2s;
+    &:hover {
+      transition: 0.2s;
+      background-color: #37a2eb;
+    }
+  }
+  &:last-child {
+    border-left: none;
+    border-radius: 0 5px 5px 0;
+    background-color: #ff737352;
+    transition: 0.2s;
+    &:hover {
+      transition: 0.2s;
+      background-color: #ff7373;
+    }
+  }
+}

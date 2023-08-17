@@ -1,0 +1,19 @@
+.user--summary--winrateContainer {
+  @include flexbox;
+  // @include boxCheck(red);
+  gap: 0 8px;
+  width: 240px;
+  justify-content: space-between;
+}
+
+.user--summary--winrateText {
+  @include flexbox;
+  flex-direction: column;
+  font-size: 14px;
+  font-weight: 600;
+  gap: 4px 0;
+  margin-right: 12px;
+  .rankText:last-child {
+    font-size: 20px;
+  }
+}

@@ -3,11 +3,42 @@ $main-color: #bde9fb;
 $sub1-color: #90cdfb;
 $sub2-color: #dfade5;
 
+// tier color below
+$legend: #e80004;
+$hero: #279c9c;
+$ace: #e2397c;
+$joker: #7d4fcd;
+$gold: #e5b640;
+$silver: #9d9d9d;
+$bronze: #784842;
+
 //mixin
 @mixin flexbox {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+@mixin userContainer($height) {
+  @include flexbox();
+  height: $height;
+  flex-direction: row;
+  width: 100%;
+  background-color: whitesmoke;
+  border-radius: 5px;
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+@mixin btn {
+  @include flexbox();
+  width: 80px;
+  height: 32px;
+  cursor: pointer;
+}
+
+@mixin boxCheck($color) {
+  box-sizing: border-box;
+  border: 2px solid $color;
 }
 
 //fonts
@@ -20,5 +51,12 @@ $sub2-color: #dfade5;
 @import "./Main";
 @import "./Widget";
 @import "./Header";
-@import "./Form";
+// @import "./Form";
 @import "./Footer";
+@import "./UserPage";
+@import "./user";
+@import "./PositionChart";
+@import "./Match";
+@import "./Logo";
+@import "./SearchBar";
+@import "./NotFound";

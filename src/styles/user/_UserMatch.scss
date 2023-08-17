@@ -1,0 +1,13 @@
+.user--match--container {
+  @include userContainer(auto);
+  @include flexbox;
+  flex-direction: column;
+  gap: 12px 0;
+  padding: 12px 0;
+}
+
+.user--match--alert {
+  @include userContainer(220px);
+  height: 220px;
+  font-size: 20px;
+}

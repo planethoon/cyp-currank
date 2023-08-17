@@ -1,0 +1,127 @@
+.user--info {
+  @include userContainer(130px);
+  justify-content: space-between;
+  margin-top: 24px;
+}
+
+.user--info--container {
+  @include flexbox;
+  flex-direction: row;
+  margin-left: 24px;
+}
+
+.user--info--character {
+  @include flexbox;
+  // border: 3px solid blue;
+  box-sizing: border-box;
+  height: 80px;
+  width: 80px;
+}
+
+.user--info--textWrapper {
+  @include flexbox;
+  flex-direction: column;
+  margin-left: 16px;
+  gap: 8px 0;
+}
+
+.user--info--clanname {
+  @include flexbox;
+}
+
+.user--info--nickname {
+  @include flexbox;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.user--info--refresh {
+  @include btn();
+  box-sizing: border-box;
+  border: 3px solid red;
+}
+
+.user--info--widget {
+  // border: 1px solid black;
+  margin-right: 24px;
+}
+
+.user--info--wTitle {
+  @include flexbox;
+  font-size: 20px;
+}
+
+.user--info--wBtnWrapper {
+  @include flexbox;
+  margin-top: 8px;
+}
+
+.user--info--wBtn {
+  @include btn;
+  box-sizing: border-box;
+  border: 0.5px solid grey;
+  border-radius: 4px;
+  transition: 0.1s;
+
+  &:last-child {
+    margin-left: 8px;
+  }
+
+  &:hover {
+    font-size: 18px;
+    transition: 0.2s;
+  }
+}
+
+.user--widget--background {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: #000000b1;
+  z-index: 3;
+}
+
+.user--widget--container {
+  flex-direction: column;
+  background-color: whitesmoke;
+  border: 1px solid black;
+  width: 400px;
+  height: 200px;
+  border-radius: 5px;
+  position: absolute;
+  top: 300px;
+  left: 50%;
+  z-index: 10;
+  transform: translate(-50%, -50%);
+  & > .widget--wrapper {
+    position: absolute;
+    left: 50%;
+    bottom: -70px;
+    transform: translate(-50%, -50%);
+  }
+  & > span {
+    position: absolute;
+    left: 55px;
+    top: 20px;
+    font-family: "SeoulHangangM";
+    font-size: 20px;
+  }
+}
+
+.user--widget--btn {
+  @include flexbox;
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  cursor: pointer;
+  // margin-bottom: 64px;
+  font-size: 24px;
+  width: 30px;
+  height: 30px;
+  transition: 0.1s;
+
+  &:hover {
+    font-size: 28px;
+    transition: 0.2s;
+  }
+}

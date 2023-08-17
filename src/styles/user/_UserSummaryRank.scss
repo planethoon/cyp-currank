@@ -1,0 +1,53 @@
+.user--summary--rankContainer {
+  // @include boxCheck(red);
+  @include flexbox;
+  width: 240px;
+  justify-content: space-between;
+}
+
+.user--summary--rankImg {
+  // @include boxCheck(red);
+  @include flexbox;
+  img {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+.user--summary--rankText {
+  @include flexbox;
+  justify-content: flex-start;
+  flex-direction: column;
+  font-size: 18px;
+  font-weight: 600;
+  margin-right: 16px;
+  .rankText {
+    margin-bottom: 4px;
+    &:first-child {
+      // margin: 4px 0;
+      font-size: 20px;
+      font-weight: 800;
+      &.legend {
+        color: $legend;
+      }
+      &.hero {
+        color: $hero;
+      }
+      &.ace {
+        color: $ace;
+      }
+      &.joker {
+        color: $joker;
+      }
+      &.gold {
+        color: $gold;
+      }
+      &.silver {
+        color: $silver;
+      }
+      &.bronze {
+        color: $bronze;
+      }
+    }
+  }
+}

@@ -1,0 +1,35 @@
+.user--background {
+  @include flexbox();
+  flex-direction: column;
+  background: rgba(144, 205, 251, 0.7);
+  background: linear-gradient(
+    149deg,
+    rgba(144, 205, 251, 0.7) 0%,
+    rgba(183, 189, 240, 0.7) 70%,
+    rgba(223, 173, 229, 0.7) 100%
+  );
+  height: auto;
+  position: relative;
+  font-family: "Pretendard-Regular";
+}
+
+.user--container {
+  @include flexbox();
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 860px;
+  padding-bottom: 128px;
+  gap: 8px;
+}
+
+.user--summary {
+  @include userContainer(250px);
+}
+
+.user--summary--rankWinrateWrapper {
+  @include flexbox;
+  flex-direction: column;
+  gap: 8px 0;
+  flex: 1 0 auto;
+  margin-left: 8px;
+}
