@@ -8,6 +8,10 @@ export default function Document() {
         <meta name="theme-color" content="#000000" />
         <meta name="description" content="쌒지지" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <meta content="쌉지지" property="og:title" />
+        <meta content="//cyp.gg" property="og:url" />
+        <meta content="사이퍼즈 전적 검색은 쌉지지" property="og:description" />
+        <meta content="//i.ibb.co/1KpFSjW/og-image-1.png" property="og:image" />
         <link rel="icon" href="/favicon.ico" />
         <script
           async
