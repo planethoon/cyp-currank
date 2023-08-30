@@ -262,6 +262,24 @@ export const MatchDetail = ({ winPlayer, losePlayer }) => {
 
 export const DetailUser = ({ data }) => {
   const [toggle, setToggle] = useState(true);
+  const itemSlot = [
+    "101",
+    "102",
+    "103",
+    "104",
+    "105",
+    "106",
+    "202",
+    "203",
+    "301",
+    "302",
+    "303",
+    "304",
+    "305",
+    "107",
+    "204",
+    "205",
+  ];
   return (
     <div className={`detailUser--container`}>
       <div className="detailUser--position">
@@ -301,19 +319,40 @@ export const DetailUser = ({ data }) => {
         </div>
       </div>
       <div className="detailUser--items">
-        {data.items.map((e, idx) => {
+        {itemSlot.map((e, idx) => {
           if (toggle ? idx < 8 : idx >= 8) {
-            return (
-              <div key={e.itemId} className="detailUser--itemWrapper">
-                <img
-                  src={`https://img-api.neople.co.kr/cy/items/${e.itemId}`}
-                  alt={e.itemName}
-                  width="40"
-                  height="40"
-                />
-                <div className="detailUser--itemSummary">{e.itemName}</div>
-              </div>
-            );
+            const found = data.items.find((element) => {
+              if (element.equipSlotCode === e) {
+                return true;
+              }
+            });
+            if (found?.itemId) {
+              return (
+                <div key={found.itemId} className="detailUser--itemWrapper">
+                  <img
+                    src={`https://img-api.neople.co.kr/cy/items/${found.itemId}`}
+                    alt={found.itemName}
+                    width="40"
+                    height="40"
+                  />
+                  <div className="detailUser--itemSummary">
+                    {found.itemName}
+                  </div>
+                </div>
+              );
+            } else {
+              return (
+                <div key={e.idx} className="detailUser--itemWrapper">
+                  <img
+                    src={`https://i.ibb.co/BjpXzdP/noitem.png`}
+                    alt={"미장착"}
+                    width="40"
+                    height="40"
+                  />
+                  <div className="detailUser--itemSummary">{"미장착"}</div>
+                </div>
+              );
+            }
           }
         })}
       </div>
