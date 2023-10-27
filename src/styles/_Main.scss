@@ -25,3 +25,7 @@
   margin-bottom: 120px;
   // font-size: 120px;
 }
+
+.main--wrapper {
+  @include flexbox;
+}

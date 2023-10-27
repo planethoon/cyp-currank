@@ -2,6 +2,8 @@ import Layout from "../components/Layout";
 import Footer from "../components/Footer";
 import Logo from "../components/Logo";
 import SearchBar from "../components/SearchBar";
+import Recent from "../components/Recent";
+import DailyRank from "../components/dailyRank";
 
 export default function App() {
   return (
@@ -12,6 +14,10 @@ export default function App() {
         </div>
         <div className="main--wrapper">
           <SearchBar />
+        </div>
+        <div className="main--wrapper">
+          <Recent />
+          <DailyRank />
         </div>
       </div>
     </div>
