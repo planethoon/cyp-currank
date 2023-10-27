@@ -3,7 +3,7 @@ import Footer from "../components/Footer";
 import Logo from "../components/Logo";
 import SearchBar from "../components/SearchBar";
 import Recent from "../components/Recent";
-import DailyRank from "../components/dailyRank";
+import DailyRank from "../components/DailyRank";
 
 export default function App() {
   return (
