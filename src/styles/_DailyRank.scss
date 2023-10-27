@@ -1,0 +1,10 @@
+.dailyrank--container {
+  @include flexbox;
+  width: 210px;
+  height: 215px;
+  margin-top: 30px;
+  border-radius: 4px;
+  background-color: whitesmoke;
+  border: 1px solid grey;
+  margin-left: 16px;
+}
