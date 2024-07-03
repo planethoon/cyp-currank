@@ -15,8 +15,8 @@ function Character({ data }) {
       <div className="recentCharacter--pic">
         <img
           src={`https://img-api.neople.co.kr/cy/characters/${characterId}`}
-          width="45"
-          height="45"
+          width="35"
+          height="35"
           alt="pic"
         />
       </div>
