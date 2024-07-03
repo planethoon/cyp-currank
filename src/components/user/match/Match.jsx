@@ -105,8 +105,8 @@ export default function Match({ matchInfo }) {
               <img
                 src={`https://img-api.neople.co.kr/cy/position-attributes/${matchInfo.position.attribute[0].id}
               `}
-                width="35"
-                height="35"
+                width="30"
+                height="30"
                 alt="attribute"
               />
             </div>
@@ -114,8 +114,8 @@ export default function Match({ matchInfo }) {
               <img
                 src={`https://img-api.neople.co.kr/cy/position-attributes/${matchInfo.position.attribute[1].id}
               `}
-                width="35"
-                height="35"
+                width="30"
+                height="30"
                 alt="attribute"
               />
             </div>
@@ -123,8 +123,17 @@ export default function Match({ matchInfo }) {
               <img
                 src={`https://img-api.neople.co.kr/cy/position-attributes/${matchInfo.position.attribute[2].id}
               `}
-                width="35"
-                height="35"
+                width="30"
+                height="30"
+                alt="attribute"
+              />
+            </div>
+            <div className="match--attribute--img">
+              <img
+                src={`https://img-api.neople.co.kr/cy/position-attributes/${matchInfo.position.attribute[3].id}
+              `}
+                width="30"
+                height="30"
                 alt="attribute"
               />
             </div>
