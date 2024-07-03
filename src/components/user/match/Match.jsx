@@ -109,6 +109,9 @@ export default function Match({ matchInfo }) {
                 height="30"
                 alt="attribute"
               />
+              <div className="match--attribute--name">
+                {matchInfo.position.attribute[0].name}
+              </div>
             </div>
             <div className="match--attribute--img">
               <img
@@ -118,6 +121,9 @@ export default function Match({ matchInfo }) {
                 height="30"
                 alt="attribute"
               />
+              <div className="match--attribute--name">
+                {matchInfo.position.attribute[1].name}
+              </div>
             </div>
             <div className="match--attribute--img">
               <img
@@ -127,6 +133,9 @@ export default function Match({ matchInfo }) {
                 height="30"
                 alt="attribute"
               />
+              <div className="match--attribute--name">
+                {matchInfo.position.attribute[2].name}
+              </div>
             </div>
             <div className="match--attribute--img">
               <img
@@ -136,6 +145,9 @@ export default function Match({ matchInfo }) {
                 height="30"
                 alt="attribute"
               />
+              <div className="match--attribute--name">
+                {matchInfo.position.attribute[3].name}
+              </div>
             </div>
           </div>
         </div>

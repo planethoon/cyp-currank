@@ -132,9 +132,37 @@ result below
   }
 }
 
+/*
+
+attribute below
+
+*/
+
 .match--attribute {
   @include flexbox;
   gap: 0 4px;
+}
+
+.match--attribute--img {
+  @include flexbox;
+  position: relative;
+
+  & > .match--attribute--name {
+    bottom: -25px;
+    position: absolute;
+    display: none;
+    height: 20px;
+    width: 90px;
+    font-size: 13px;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 5px;
+  }
+  &:hover > .match--attribute--name {
+    @include flexbox;
+    z-index: 2;
+  }
 }
 
 /*
