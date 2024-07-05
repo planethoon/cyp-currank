@@ -1,8 +1,24 @@
 import { imageSelecter } from "../images";
 import { useUserInfoQuery } from "../react-query/useUserInfoQuery";
+import { useEffect, useState } from "react";
 
 const Widget = ({ nickname = "nextjs" }) => {
   const { data: userInfo } = useUserInfoQuery(nickname, 600000);
+  const [host, setHost] = useState("");
+
+  useEffect(() => {
+    setHost(window.location.host);
+  }, []);
+
+  if (host === "cyptools.xyz") {
+    return (
+      <div className="widget--alert">
+        <span>주소를 cyp.gg 로 변경해주세요.</span>
+        <span>자세한 내용은 공지사항을 참고 부탁드립니다.</span>
+        <span>https://url.kr/uEAYx7</span>
+      </div>
+    );
+  }
 
   const adjustNicknameSize = (nickname) => {
     let leng = nickname.length;
