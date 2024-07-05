@@ -23,6 +23,7 @@ function NotFound() {
         <div className="notfound--textBox">
           <span>유저를 찾지 못했습니다.</span>
           <span>{`${timer}초 후 메인화면으로 돌아갑니다.`}</span>
+          <span>존재하는 유저일 경우, 사이퍼즈 점검 시간을 확인해주세요.</span>
         </div>
       </div>
     </div>

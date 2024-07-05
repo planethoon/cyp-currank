@@ -1,25 +1,33 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useUserInfoQuery } from "../../react-query/useUserInfoQuery";
 
 export default function UserInfo({ host, nickname, switchModal }) {
-  const { data } = useUserInfoQuery(nickname);
+  const { data, isFetching } = useUserInfoQuery(nickname);
   const [copy, setCopy] = useState("링크복사");
 
   return (
     <div className="user--info">
       <div className="user--info--container">
         <div className="user--info--character">
-          <img
-            src={`https://img-api.neople.co.kr/cy/characters/${data.characterId}`}
-            alt={"character"}
-            height="80"
-            width="80"
-          />
+          {isFetching ? (
+            <></>
+          ) : (
+            <img
+              src={`https://img-api.neople.co.kr/cy/characters/${data.characterId}`}
+              alt={"character"}
+              height="80"
+              width="80"
+            />
+          )}
         </div>
         <div className="user--info--textWrapper">
           <div className="user--info--clanname">{data.clanName}</div>
           <div className="user--info--nickname">{data.nickname}</div>
-          <div className="user--info--grade">{data.grade}급</div>
+          {isFetching ? (
+            <></>
+          ) : (
+            <div className="user--info--grade">{data.grade}급</div>
+          )}
         </div>
       </div>
       <div className="user--info--widget">
