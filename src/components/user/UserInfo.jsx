@@ -1,15 +1,15 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useUserInfoQuery } from "../../react-query/useUserInfoQuery";
 
 export default function UserInfo({ host, nickname, switchModal }) {
-  const { data, isFetching } = useUserInfoQuery(nickname);
+  const { data } = useUserInfoQuery(nickname);
   const [copy, setCopy] = useState("링크복사");
 
   return (
     <div className="user--info">
       <div className="user--info--container">
         <div className="user--info--character">
-          {isFetching ? (
+          {!data.nickname ? (
             <></>
           ) : (
             <img
@@ -23,7 +23,7 @@ export default function UserInfo({ host, nickname, switchModal }) {
         <div className="user--info--textWrapper">
           <div className="user--info--clanname">{data.clanName}</div>
           <div className="user--info--nickname">{data.nickname}</div>
-          {isFetching ? (
+          {!data.nickname ? (
             <></>
           ) : (
             <div className="user--info--grade">{data.grade}급</div>
