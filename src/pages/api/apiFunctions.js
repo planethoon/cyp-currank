@@ -146,3 +146,13 @@ export async function getMatchesNext(playerId, next) {
   const json = await res.json();
   return { nextkey: json.matches.next, matches: json.matches.rows };
 }
+
+export async function getDailyRanking() {
+  const key = process.env.API_KEY;
+  const endpoint = "https://api.neople.co.kr/cy";
+  const query = `/ranking/ratingpoint?offset=0&limit=5&apikey=${key}`;
+
+  const data = await fetch(endpoint + query);
+  const json = await data.json();
+  return json.rows;
+}

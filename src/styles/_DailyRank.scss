@@ -1,10 +1,74 @@
 .dailyrank--container {
   @include flexbox;
+  justify-content: flex-start;
+  flex-direction: column;
   width: 210px;
-  height: 215px;
+  height: 200px;
+  padding: 8px;
   margin-top: 30px;
   border-radius: 4px;
   background-color: whitesmoke;
   border: 1px solid grey;
   margin-left: 16px;
+  font-family: "SeoulHangangM";
+}
+
+.dailyrank--title {
+  @include flexbox;
+  font-size: 20px;
+  border-bottom: 1.5px solid transparent;
+  border-image: linear-gradient(to right, whitesmoke, #c7c7c7, whitesmoke);
+  border-image-slice: 1;
+  height: 30px;
+  width: 180px;
+}
+
+.dailyrank--listWrapper {
+  @include flexbox;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+// Ranklist below
+.ranklist--container {
+  @include flexbox;
+  justify-content: flex-start;
+  padding-top: 14px;
+}
+
+.ranklist--place--wrapper {
+  @include flexbox;
+  justify-content: flex-start;
+  width: 42px;
+}
+
+.ranklist--nickname {
+  @include flexbox;
+  width: 120px;
+  cursor: pointer;
+  transition: 0.1s;
+  &:hover {
+    font-weight: 800;
+    font-size: 17px;
+    transition: 0.2s;
+  }
+}
+
+.ranklist--ratingPoint {
+  @include flexbox;
+  width: 45px;
+  font-size: 18px;
+}
+.ranklist--place--before {
+  & > svg {
+    padding: 0 0.5px;
+  }
+
+  &.red > svg {
+    color: red;
+  }
+  &.blue > svg {
+    color: blue;
+  }
 }
