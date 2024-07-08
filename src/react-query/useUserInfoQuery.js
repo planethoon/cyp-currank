@@ -4,7 +4,7 @@ export function useUserInfoQuery(nickname, interval) {
   const config = {
     queryKey: ["userinfo", nickname],
     queryFn: async () => {
-      const res = await fetch(`/api/${nickname}`);
+      const res = await fetch(`/api/getUserInfo/${nickname}`);
       const json = await res.json();
 
       return json;

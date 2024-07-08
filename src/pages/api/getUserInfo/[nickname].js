@@ -1,4 +1,4 @@
-import { getPlayerId, getRanking, getUserDetail } from "./apiFunctions";
+import { getPlayerId, getRanking, getUserDetail } from "../apiFunctions";
 
 require("dotenv").config();
 

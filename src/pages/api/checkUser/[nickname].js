@@ -1,6 +1,5 @@
 require("dotenv").config();
-import { TRUE } from "sass";
-import { getPlayerId, getUserDetail } from "../apiFunctions";
+import { getPlayerId } from "../apiFunctions";
 
 export default async function handler(req, res) {
   const { nickname } = req.query;
