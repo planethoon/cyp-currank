@@ -41,7 +41,15 @@ function Ranklist({ data }) {
 }
 
 function RankBefore({ current, before }) {
-  if (current === before) {
+  if (before === 0) {
+    return (
+      <div className={`ranklist--place--before`}>
+        <span>(</span>
+        New!
+        <span>)</span>
+      </div>
+    );
+  } else if (current === before) {
     return (
       <div className={`ranklist--place--before`}>
         <span>(</span>
