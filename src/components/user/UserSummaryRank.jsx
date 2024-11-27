@@ -16,7 +16,15 @@ function UserSummaryRank({ userInfo }) {
         />
       </div>
       <div className="user--summary--rankText">
-        <div className="rankText bronze">{userInfo.tierName}</div>
+        <div
+          className={`rankText ${
+            userInfo.tierName
+              ? userInfo.tierName.split(" ")[0].toLowerCase()
+              : "bronze"
+          }`}
+        >
+          {userInfo.tierName}
+        </div>
         <div className="rankText">{`현재: ${
           userInfo.ratingPoint ? userInfo.ratingPoint : 0
         }`}</div>

@@ -25,7 +25,7 @@
     margin-bottom: 4px;
     &:first-child {
       // margin: 4px 0;
-      font-size: 20px;
+      font-size: 18px;
       font-weight: 800;
       &.legend {
         color: $legend;
@@ -38,6 +38,9 @@
       }
       &.joker {
         color: $joker;
+      }
+      &.diamond {
+        color: $diamond;
       }
       &.gold {
         color: $gold;
